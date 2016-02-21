@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MemeMeViewController: UIViewController {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+	@IBOutlet weak var memeImage: UIImageView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.

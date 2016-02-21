@@ -29,6 +29,9 @@
                             <constraint firstItem="HPN-8P-PF2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p3u-6j-dA6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeImage" destination="HPN-8P-PF2" id="zkE-uE-eob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
