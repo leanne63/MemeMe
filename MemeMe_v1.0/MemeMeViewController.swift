@@ -13,18 +13,22 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	// MARK: - Outlets
 	
 	@IBOutlet weak var memeImage: UIImageView!
+	@IBOutlet weak var albumButton: UIBarButtonItem!
+	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	
 	
 	// MARK: - View Controller Overrides
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		albumButton.enabled = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
+		cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
 	}
 
 	
@@ -33,6 +37,23 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBAction func pickAMemeImage(sender: UIBarButtonItem) {
 		let imagePickerController = UIImagePickerController()
 		imagePickerController.delegate = self
+		
+		var sourceType: UIImagePickerControllerSourceType?
+		
+		switch sender {
+			
+		case albumButton:
+			sourceType = .PhotoLibrary
+			
+		case cameraButton:
+			sourceType = .Camera
+			
+		default:
+			print("invalid sender")
+			return
+		}
+		
+		imagePickerController.sourceType = sourceType!
 		
 		presentViewController(imagePickerController, animated: true, completion: nil)
 	}
