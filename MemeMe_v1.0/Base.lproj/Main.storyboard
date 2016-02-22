@@ -6,7 +6,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Meme Me View Controller-->
+        <!--Meme Editor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MemeMeViewController" customModule="MemeMe_v1_0" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,11 @@
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="wNw-SO-6qi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aFx-pn-DnC"/>
+                    <navigationItem key="navigationItem" title="Meme Editor" id="dBp-g5-YMN">
+                        <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="albumButton" destination="ZCX-H4-T7W" id="Dhp-Nk-0K8"/>
                         <outlet property="bottomLabel" destination="KJv-m8-NTS" id="58L-dQ-hk5"/>
