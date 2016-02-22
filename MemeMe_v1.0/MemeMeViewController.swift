@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 	// MARK: - Outlets
 	
@@ -29,6 +29,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		topLabel.delegate = self
+		bottomLabel.delegate = self
 		
 	}
 	
@@ -87,5 +90,15 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 
+	
+	// MARK: - Text Field Delegate Methods
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.endEditing(true)
+		textField.resignFirstResponder()
+		
+		return true
+	}
+	
 }
 
