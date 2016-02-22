@@ -15,12 +15,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBOutlet weak var memeImage: UIImageView!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
+	@IBOutlet weak var topLabel: UITextField!
+	@IBOutlet weak var bottomLabel: UITextField!
 	
 	
 	// MARK: - View Controller Overrides
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		topLabel.text = "TOP"
+		topLabel.textAlignment = .Center
+		
+		bottomLabel.text = "BOTTOM"
+		bottomLabel.textAlignment = .Center
 
 	}
 	
