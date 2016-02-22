@@ -33,6 +33,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		topLabel.delegate = self
 		bottomLabel.delegate = self
 		
+		let paragraphStyleToCenterText = NSMutableParagraphStyle()
+		paragraphStyleToCenterText.alignment = NSTextAlignment.Center
+		
+		let memeTextAttributes = [
+			NSStrokeColorAttributeName : UIColor.blackColor(),
+			NSForegroundColorAttributeName : UIColor.whiteColor(),
+			NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+			NSStrokeWidthAttributeName : 3.0,
+			
+			NSParagraphStyleAttributeName : paragraphStyleToCenterText
+		]
+		
+		topLabel.defaultTextAttributes = memeTextAttributes
+		bottomLabel.defaultTextAttributes = memeTextAttributes
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -55,9 +69,11 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 			
 		case albumButton:
 			sourceType = .PhotoLibrary
+			print("selected album")
 			
 		case cameraButton:
 			sourceType = .Camera
+			print("selected camera")
 			
 		default:
 			print("invalid sender")
@@ -70,9 +86,11 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	@IBAction func cancelMemeEditor(sender: UIBarButtonItem) {
+		
 		// return to default state
 		topLabel.attributedText = NSAttributedString(string: defaultTopText)
 		bottomLabel.attributedText = NSAttributedString(string: defaultBottomText)
+		
 		memeImageView.image = nil
 	}
 	
@@ -87,6 +105,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+		
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 
@@ -94,10 +113,12 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	// MARK: - Text Field Delegate Methods
 	
 	func textFieldDidBeginEditing(textField: UITextField) {
+		
 		textField.text = ""
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		
 		textField.endEditing(true)
 		textField.resignFirstResponder()
 		
