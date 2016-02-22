@@ -12,11 +12,17 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 	// MARK: - Outlets
 	
-	@IBOutlet weak var memeImage: UIImageView!
+	@IBOutlet weak var memeImageView: UIImageView!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	@IBOutlet weak var topLabel: UITextField!
 	@IBOutlet weak var bottomLabel: UITextField!
+	
+	
+	// MARK: - Properties
+	
+	let defaultTopText = "TOP"
+	let defaultBottomText = "BOTTOM"
 	
 	
 	// MARK: - View Controller Overrides
@@ -24,12 +30,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		topLabel.text = "TOP"
-		topLabel.textAlignment = .Center
-		
-		bottomLabel.text = "BOTTOM"
-		bottomLabel.textAlignment = .Center
-
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -66,11 +66,19 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		presentViewController(imagePickerController, animated: true, completion: nil)
 	}
 	
+	@IBAction func cancelMemeEditor(sender: UIBarButtonItem) {
+		// return to default state
+		topLabel.attributedText = NSAttributedString(string: defaultTopText)
+		bottomLabel.attributedText = NSAttributedString(string: defaultBottomText)
+		memeImageView.image = nil
+	}
+	
 	
 	// MARK: - Image Picker Delegate Methods
 	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-		memeImage.image = image
+		
+		memeImageView.image = image
 		
 		dismissViewControllerAnimated(true, completion: nil)
 	}
