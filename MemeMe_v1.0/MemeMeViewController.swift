@@ -93,6 +93,10 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Text Field Delegate Methods
 	
+	func textFieldDidBeginEditing(textField: UITextField) {
+		textField.text = ""
+	}
+	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		textField.endEditing(true)
 		textField.resignFirstResponder()
