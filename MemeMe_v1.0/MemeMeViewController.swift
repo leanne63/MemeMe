@@ -137,8 +137,10 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 
-		let newText = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
-		textField.text = newText
+		let currentText = textField.text! as NSString
+		let capitalizedText = currentText.stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
+		
+		textField.text = capitalizedText
 		
 		return false
 	}
@@ -200,7 +202,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		let userInfo = notification.userInfo!
 		
-		let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+		let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
 		let keyboardSizeAsFloat = keyboardSize.CGRectValue().height
 		
 		return keyboardSizeAsFloat
