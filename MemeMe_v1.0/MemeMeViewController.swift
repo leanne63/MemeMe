@@ -135,6 +135,14 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		return true
 	}
 	
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+
+		let newText = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string.uppercaseString)
+		textField.text = newText
+		
+		return false
+	}
+	
 	
 	// MARK: - Subscribe/Unsubscribe to Notifications
 	
