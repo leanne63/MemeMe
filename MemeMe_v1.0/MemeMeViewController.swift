@@ -21,6 +21,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Properties
 	
+	// setting text constants for use as needed
 	let defaultTopText = "TOP"
 	let defaultBottomText = "BOTTOM"
 	
@@ -33,6 +34,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		topLabel.delegate = self
 		bottomLabel.delegate = self
 		
+		// set up font styling
 		let paragraphStyleToCenterText = NSMutableParagraphStyle()
 		paragraphStyleToCenterText.alignment = NSTextAlignment.Center
 		
@@ -47,40 +49,52 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		topLabel.defaultTextAttributes = memeTextAttributes
 		bottomLabel.defaultTextAttributes = memeTextAttributes
+		
+		subscribeToKeyboardNotifications()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
+		
 		super.viewWillAppear(animated)
 		
 		albumButton.enabled = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
 		cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
 	}
-
+	
+	override func viewWillDisappear(animated: Bool) {
+		
+		super.viewWillDisappear(animated)
+		
+		// unsubscribe from notifications before view goes away
+		unsubscribeFromKeyboardNotifications()
+	}
+	
 	
 	// MARK: - Actions
 	
 	@IBAction func pickAMemeImage(sender: UIBarButtonItem) {
+		
 		let imagePickerController = UIImagePickerController()
 		imagePickerController.delegate = self
 		
-		var sourceType: UIImagePickerControllerSourceType?
+		// define controller's source type based on method for image selection
+		// (implicitly unwrapping since we'll return if no valid source type)
+		var sourceType: UIImagePickerControllerSourceType!
 		
 		switch sender {
 			
 		case albumButton:
 			sourceType = .PhotoLibrary
-			print("selected album")
 			
 		case cameraButton:
 			sourceType = .Camera
-			print("selected camera")
 			
 		default:
 			print("invalid sender")
 			return
 		}
 		
-		imagePickerController.sourceType = sourceType!
+		imagePickerController.sourceType = sourceType
 		
 		presentViewController(imagePickerController, animated: true, completion: nil)
 	}
@@ -114,15 +128,80 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func textFieldDidBeginEditing(textField: UITextField) {
 		
+		// clear text for each new edit session
 		textField.text = ""
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		
+		// dismiss the keyboard
 		textField.endEditing(true)
 		textField.resignFirstResponder()
 		
 		return true
+	}
+	
+	
+	// MARK: - Subscribe/Unsubscribe to Notifications
+	
+	func subscribeToKeyboardNotifications() {
+		
+		// watch for the keyboard to show
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: "keyboardWillShow:",
+			name: UIKeyboardWillShowNotification,
+			object: nil)
+		
+		// watch for the keyboard to hide
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: "keyboardWillHide:",
+			name: UIKeyboardWillHideNotification,
+			object: nil)
+	}
+	
+	func unsubscribeFromKeyboardNotifications() {
+		
+		// no longer need to watch for keyboard to show
+		NSNotificationCenter.defaultCenter().removeObserver(self,
+			name: UIKeyboardWillShowNotification,
+			object: nil)
+
+		// no longer need to watch for keyboard to hide
+		NSNotificationCenter.defaultCenter().removeObserver(self,
+			name: UIKeyboardWillHideNotification,
+			object: nil)
+}
+	
+	
+	// MARK: - Respond to Notifications
+	
+	func keyboardWillShow(notification: NSNotification) {
+		
+		// if we're entering bottom text, move the image up so we can see our edits
+		if bottomLabel.isFirstResponder() {
+			view.frame.origin.y -= getKeyboardHeight(notification)
+		}
+	}
+	
+	func keyboardWillHide(notification: NSNotification) {
+		
+		// if we're entering bottom text, move the image up so we can see our edits
+		if bottomLabel.isFirstResponder() {
+			view.frame.origin.y += getKeyboardHeight(notification)
+		}
+	}
+	
+	
+	// MARK: - Utility Functions
+	
+	func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+		
+		let userInfo = notification.userInfo!
+		
+		let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+		let keyboardSizeAsFloat = keyboardSize.CGRectValue().height
+		
+		return keyboardSizeAsFloat
 	}
 	
 }
