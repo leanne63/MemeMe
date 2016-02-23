@@ -42,9 +42,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 			NSStrokeColorAttributeName : UIColor.blackColor(),
 			NSForegroundColorAttributeName : UIColor.whiteColor(),
 			NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-			NSStrokeWidthAttributeName : 3.0,
+			NSStrokeWidthAttributeName : -3.0,
 			
-			NSParagraphStyleAttributeName : paragraphStyleToCenterText
+			NSParagraphStyleAttributeName : paragraphStyleToCenterText,
 		]
 		
 		topLabel.defaultTextAttributes = memeTextAttributes
