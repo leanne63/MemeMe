@@ -73,7 +73,7 @@
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="wNw-SO-6qi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meme Editor" id="dBp-g5-YMN">
+                    <navigationItem key="navigationItem" title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
                         <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
@@ -87,6 +87,7 @@
                         <outlet property="bottomLabel" destination="KJv-m8-NTS" id="58L-dQ-hk5"/>
                         <outlet property="cameraButton" destination="KmG-nS-igt" id="9Mv-in-Meh"/>
                         <outlet property="memeImageView" destination="ZV6-Av-vw3" id="5lm-Lc-u5C"/>
+                        <outlet property="toolBar" destination="4Oq-IZ-Sin" id="AMM-1u-YIc"/>
                         <outlet property="topLabel" destination="QYr-Dr-9cE" id="0co-Lh-OkN"/>
                     </connections>
                 </viewController>
