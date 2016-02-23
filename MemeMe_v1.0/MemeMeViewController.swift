@@ -12,6 +12,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 	// MARK: - Outlets
 	
+	@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var memeImageView: UIImageView!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -206,6 +207,36 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		let keyboardSizeAsFloat = keyboardSize.CGRectValue().height
 		
 		return keyboardSizeAsFloat
+	}
+	
+	func generateMemedImage() -> UIImage
+	{
+		// hide the tool and nav bars, so won't show in image
+		toolBar.hidden = true
+		navigationController?.navigationBar.hidden = true
+		
+		// Render view to an image, using a context
+		UIGraphicsBeginImageContext(self.view.frame.size)
+		
+		view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+		let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+		
+		UIGraphicsEndImageContext()
+		
+		// return the tool and nav bars back to normal
+		toolBar.hidden = false
+		navigationController?.navigationBar.hidden = false
+		
+		return memedImage
+	}
+	
+	func saveMeme() {
+		// instantiate a meme object
+		let meme = Meme.init(
+			topMemeText: topLabel.text,
+			bottomMemeText: bottomLabel.text,
+			originalImage: memeImageView.image,
+			memedImage: generateMemedImage())
 	}
 	
 }

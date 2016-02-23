@@ -12,6 +12,7 @@
 		D518D8F01C7A21B200CF7E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D518D8EE1C7A21B200CF7E56 /* Main.storyboard */; };
 		D518D8F21C7A21B200CF7E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D518D8F11C7A21B200CF7E56 /* Assets.xcassets */; };
 		D518D8F51C7A21B200CF7E56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D518D8F31C7A21B200CF7E56 /* LaunchScreen.storyboard */; };
+		D518D8FD1C7CD25300CF7E56 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518D8FC1C7CD25300CF7E56 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D518D8F11C7A21B200CF7E56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D518D8F41C7A21B200CF7E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D518D8F61C7A21B200CF7E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D518D8FC1C7CD25300CF7E56 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				D518D8EA1C7A21B200CF7E56 /* AppDelegate.swift */,
 				D518D8EC1C7A21B200CF7E56 /* MemeMeViewController.swift */,
+				D518D8FC1C7CD25300CF7E56 /* Meme.swift */,
 				D518D8EE1C7A21B200CF7E56 /* Main.storyboard */,
 				D518D8F11C7A21B200CF7E56 /* Assets.xcassets */,
 				D518D8F31C7A21B200CF7E56 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D518D8FD1C7CD25300CF7E56 /* Meme.swift in Sources */,
 				D518D8ED1C7A21B200CF7E56 /* MemeMeViewController.swift in Sources */,
 				D518D8EB1C7A21B200CF7E56 /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +293,7 @@
 				D518D8FB1C7A21B200CF7E56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
