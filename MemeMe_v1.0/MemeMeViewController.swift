@@ -126,12 +126,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Text Field Delegate Methods
 	
-	func textFieldDidBeginEditing(textField: UITextField) {
-		
-		// clear text for each new edit session
-		textField.text = ""
-	}
-	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		
 		// dismiss the keyboard
