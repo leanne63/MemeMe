@@ -40,24 +40,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		topTextField.delegate = self
 		bottomTextField.delegate = self
 		
-		// set up font styling
-		let paragraphStyleToCenterText = NSMutableParagraphStyle()
-		paragraphStyleToCenterText.alignment = NSTextAlignment.Center
-		
-		let memeTextAttributes = [
-			NSStrokeColorAttributeName : UIColor.blackColor(),
-			NSForegroundColorAttributeName : UIColor.whiteColor(),
-			NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-			NSStrokeWidthAttributeName : -3.0,
-			
-			NSParagraphStyleAttributeName : paragraphStyleToCenterText,
-		]
-		
-		topTextField.defaultTextAttributes = memeTextAttributes
-		topTextField.adjustsFontSizeToFitWidth = true
-		
-		bottomTextField.defaultTextAttributes = memeTextAttributes
-		bottomTextField.adjustsFontSizeToFitWidth = true
+		setCommonFontStyling(topTextField)
+		setCommonFontStyling(bottomTextField)
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -225,14 +209,32 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func keyboardWillHide(notification: NSNotification) {
 		
-		// if we're entering bottom text, move the image up so we can see our edits
+		// if we were entering bottom text, move the image back down to normal
 		if bottomTextField.isFirstResponder() {
-			view.frame.origin.y += getKeyboardHeight(notification)
+			view.frame.origin.y = 0
 		}
 	}
 	
 	
 	// MARK: - Utility Functions
+	
+	func setCommonFontStyling(textField: UITextField) {
+		
+		let paragraphStyleToCenterText = NSMutableParagraphStyle()
+		paragraphStyleToCenterText.alignment = NSTextAlignment.Center
+		
+		let memeTextAttributes = [
+			NSStrokeColorAttributeName : UIColor.blackColor(),
+			NSForegroundColorAttributeName : UIColor.whiteColor(),
+			NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+			NSStrokeWidthAttributeName : -3.0,
+			
+			NSParagraphStyleAttributeName : paragraphStyleToCenterText,
+		]
+		
+		textField.defaultTextAttributes = memeTextAttributes
+		textField.adjustsFontSizeToFitWidth = true
+	}
 	
 	func dismissKeyboard(textField: UITextField) {
 		
