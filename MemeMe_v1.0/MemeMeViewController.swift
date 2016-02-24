@@ -54,7 +54,10 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		]
 		
 		topTextField.defaultTextAttributes = memeTextAttributes
+		topTextField.adjustsFontSizeToFitWidth = true
+		
 		bottomTextField.defaultTextAttributes = memeTextAttributes
+		bottomTextField.adjustsFontSizeToFitWidth = true
 	}
 	
 	override func viewWillAppear(animated: Bool) {
