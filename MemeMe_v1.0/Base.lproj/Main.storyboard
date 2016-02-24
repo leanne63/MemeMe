@@ -90,11 +90,11 @@
                     <connections>
                         <outlet property="activityButton" destination="M9l-7d-joL" id="Aqf-7f-RhS"/>
                         <outlet property="albumButton" destination="ZCX-H4-T7W" id="Dhp-Nk-0K8"/>
-                        <outlet property="bottomLabel" destination="KJv-m8-NTS" id="58L-dQ-hk5"/>
+                        <outlet property="bottomTextField" destination="KJv-m8-NTS" id="eV8-sW-sv3"/>
                         <outlet property="cameraButton" destination="KmG-nS-igt" id="9Mv-in-Meh"/>
                         <outlet property="memeImageView" destination="ZV6-Av-vw3" id="5lm-Lc-u5C"/>
                         <outlet property="toolBar" destination="4Oq-IZ-Sin" id="AMM-1u-YIc"/>
-                        <outlet property="topLabel" destination="QYr-Dr-9cE" id="0co-Lh-OkN"/>
+                        <outlet property="topTextField" destination="QYr-Dr-9cE" id="hzK-00-aAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

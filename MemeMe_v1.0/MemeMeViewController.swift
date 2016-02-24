@@ -14,8 +14,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	@IBOutlet weak var memeImageView: UIImageView!
 	
-	@IBOutlet weak var topLabel: UITextField!
-	@IBOutlet weak var bottomLabel: UITextField!
+	@IBOutlet weak var topTextField: UITextField!
+	@IBOutlet weak var bottomTextField: UITextField!
 	
 	@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
@@ -37,8 +37,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		topLabel.delegate = self
-		bottomLabel.delegate = self
+		topTextField.delegate = self
+		bottomTextField.delegate = self
 		
 		// set up font styling
 		let paragraphStyleToCenterText = NSMutableParagraphStyle()
@@ -53,10 +53,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 			NSParagraphStyleAttributeName : paragraphStyleToCenterText,
 		]
 		
-		topLabel.defaultTextAttributes = memeTextAttributes
-		bottomLabel.defaultTextAttributes = memeTextAttributes
-		
-		subscribeToKeyboardNotifications()
+		topTextField.defaultTextAttributes = memeTextAttributes
+		bottomTextField.defaultTextAttributes = memeTextAttributes
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -67,6 +65,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
 		
 		activityButton.enabled = (memeImageView.image != nil) ? true : false
+		
+		subscribeToKeyboardNotifications()
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
@@ -127,12 +127,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBAction func cancelMemeEditor(sender: UIBarButtonItem) {
 		
 		// return to default state
-		topLabel.attributedText = NSAttributedString(string: defaultTopText)
-		bottomLabel.attributedText = NSAttributedString(string: defaultBottomText)
+		topTextField.attributedText = NSAttributedString(string: defaultTopText)
+		bottomTextField.attributedText = NSAttributedString(string: defaultBottomText)
 		
 		memeImageView.image = nil
 		
 		activityButton.enabled = false
+		
+		if topTextField.isFirstResponder() {
+			dismissKeyboard(topTextField)
+			
+		}
+		else if bottomTextField.isFirstResponder() {
+			dismissKeyboard(bottomTextField)
+		}
 	}
 	
 	
@@ -155,9 +163,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		
-		// dismiss the keyboard
-		textField.endEditing(true)
-		textField.resignFirstResponder()
+		dismissKeyboard(textField)
 		
 		return true
 	}
@@ -209,7 +215,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	func keyboardWillShow(notification: NSNotification) {
 		
 		// if we're entering bottom text, move the image up so we can see our edits
-		if bottomLabel.isFirstResponder() {
+		if bottomTextField.isFirstResponder() {
 			view.frame.origin.y -= getKeyboardHeight(notification)
 		}
 	}
@@ -217,13 +223,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	func keyboardWillHide(notification: NSNotification) {
 		
 		// if we're entering bottom text, move the image up so we can see our edits
-		if bottomLabel.isFirstResponder() {
+		if bottomTextField.isFirstResponder() {
 			view.frame.origin.y += getKeyboardHeight(notification)
 		}
 	}
 	
 	
 	// MARK: - Utility Functions
+	
+	func dismissKeyboard(textField: UITextField) {
+		
+		// dismiss the keyboard
+		textField.endEditing(true)
+		textField.resignFirstResponder()
+	}
 	
 	func getKeyboardHeight(notification: NSNotification) -> CGFloat {
 		
@@ -259,15 +272,13 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		// instantiate a meme object
 		let meme = Meme.init(
-			topMemeText: topLabel.text,
-			bottomMemeText: bottomLabel.text,
+			topMemeText: topTextField.text,
+			bottomMemeText: bottomTextField.text,
 			originalImage: memeImageView.image,
 			memedImage: memedImage)
 		
 		// add it to our app's array of memes
 		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-		
-		print("meme saved")
 	}
 	
 }
