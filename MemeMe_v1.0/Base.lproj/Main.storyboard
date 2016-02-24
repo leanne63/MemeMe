@@ -75,7 +75,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
                         <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL">
+                            <connections>
+                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ExS-Am-qMn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
                             <connections>
                                 <action selector="cancelMemeEditor:" destination="BYZ-38-t0r" id="3fk-Ux-1SX"/>
@@ -83,6 +87,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityButton" destination="M9l-7d-joL" id="Aqf-7f-RhS"/>
                         <outlet property="albumButton" destination="ZCX-H4-T7W" id="Dhp-Nk-0K8"/>
                         <outlet property="bottomLabel" destination="KJv-m8-NTS" id="58L-dQ-hk5"/>
                         <outlet property="cameraButton" destination="KmG-nS-igt" id="9Mv-in-Meh"/>
