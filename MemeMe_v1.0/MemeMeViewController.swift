@@ -12,19 +12,24 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 	// MARK: - Outlets
 	
-	@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var memeImageView: UIImageView!
-	@IBOutlet weak var albumButton: UIBarButtonItem!
-	@IBOutlet weak var cameraButton: UIBarButtonItem!
+	
 	@IBOutlet weak var topLabel: UITextField!
 	@IBOutlet weak var bottomLabel: UITextField!
 	
+	@IBOutlet weak var toolBar: UIToolbar!
+	@IBOutlet weak var albumButton: UIBarButtonItem!
+	@IBOutlet weak var cameraButton: UIBarButtonItem!
+	
+	@IBOutlet weak var activityButton: UIBarButtonItem!
 	
 	// MARK: - Properties
 	
 	// setting text constants for use as needed
 	let defaultTopText = "TOP"
 	let defaultBottomText = "BOTTOM"
+	
+	var memedImage: UIImage!
 	
 	
 	// MARK: - View Controller Overrides
@@ -60,13 +65,14 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		albumButton.enabled = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
 		cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+		
+		activityButton.enabled = (memeImageView.image != nil) ? true : false
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
 		
 		super.viewWillDisappear(animated)
 		
-		// unsubscribe from notifications before view goes away
 		unsubscribeFromKeyboardNotifications()
 	}
 	
@@ -100,6 +106,24 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		presentViewController(imagePickerController, animated: true, completion: nil)
 	}
 	
+	@IBAction func shareMeme(sender: UIBarButtonItem) {
+		
+		memedImage = generateMemedImage()
+		
+		let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+		activityViewController.completionWithItemsHandler = {
+			(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -> Void in
+		
+			if completed {
+				self.saveMeme()
+				
+				self.dismissViewControllerAnimated(true, completion: nil)
+			}
+		}
+		
+		presentViewController(activityViewController, animated: true, completion: nil)
+	}
+	
 	@IBAction func cancelMemeEditor(sender: UIBarButtonItem) {
 		
 		// return to default state
@@ -107,6 +131,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		bottomLabel.attributedText = NSAttributedString(string: defaultBottomText)
 		
 		memeImageView.image = nil
+		
+		activityButton.enabled = false
 	}
 	
 	
@@ -209,8 +235,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		return keyboardSizeAsFloat
 	}
 	
-	func generateMemedImage() -> UIImage
-	{
+	func generateMemedImage() -> UIImage {
 		// hide the tool and nav bars, so won't show in image
 		toolBar.hidden = true
 		navigationController?.navigationBar.hidden = true
@@ -231,12 +256,18 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	func saveMeme() {
+		
 		// instantiate a meme object
 		let meme = Meme.init(
 			topMemeText: topLabel.text,
 			bottomMemeText: bottomLabel.text,
 			originalImage: memeImageView.image,
-			memedImage: generateMemedImage())
+			memedImage: memedImage)
+		
+		// add it to our app's array of memes
+		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+		
+		print("meme saved")
 	}
 	
 }
