@@ -21,8 +21,10 @@ class MemeMeUnitTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+		//XCTFail("Automatic fail for testing purposes.")
+		XCTAssert(true, "Automatic pass for testing purposes")
+		
     }
     
     func testPerformanceExample() {
