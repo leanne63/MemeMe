@@ -187,7 +187,7 @@
         <scene sceneID="mfH-lz-P6t">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y16-U7-ngK" userLabel="Collection Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AIv-EV-n1h"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="Collection_Icon" id="AIv-EV-n1h"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VtC-lP-C5w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -206,7 +206,7 @@
         <scene sceneID="k8T-R0-xgB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uDD-FQ-Jmv" userLabel="Table Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ni8-0e-836"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="Table_Icon" id="ni8-0e-836"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JVt-EO-Rth">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -240,4 +240,8 @@
             <point key="canvasLocation" x="295" y="-805"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Collection_Icon" width="30" height="30"/>
+        <image name="Table_Icon" width="30" height="30"/>
+    </resources>
 </document>
