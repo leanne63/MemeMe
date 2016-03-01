@@ -30,7 +30,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="jhL-0a-jAU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS">
+                            <connections>
+                                <segue destination="GfS-Cm-mkW" kind="show" id="USQ-3B-7bO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qj-rS-Rwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,7 +71,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="bDK-BP-3ui">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i">
+                            <connections>
+                                <segue destination="GfS-Cm-mkW" kind="show" id="6wQ-W3-uxi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOm-UB-0Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1107" y="421"/>
+            <point key="canvasLocation" x="3747" y="-1301"/>
         </scene>
         <!--Editor Navigation Controller-->
         <scene sceneID="4Mo-g9-Yl2">
@@ -182,7 +190,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="295" y="421"/>
+            <point key="canvasLocation" x="2935" y="-1301"/>
         </scene>
         <!--Collection Navigation Controller-->
         <scene sceneID="mfH-lz-P6t">
@@ -245,4 +253,7 @@
         <image name="Collection_Icon" width="30" height="30"/>
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="USQ-3B-7bO"/>
+    </inferredMetricsTieBreakers>
 </document>
