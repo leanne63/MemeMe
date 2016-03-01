@@ -1,6 +1,6 @@
 //
-//  MemeMeViewController.swift
-//  MemeMe_v1.0
+//  EditorViewController.swift
+//  MemeMe_v2.0
 //
 //  Created by leanne on 2/21/16.
 //  Copyright © 2016 leanne63. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 	// MARK: - Outlets
 	
@@ -17,7 +17,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
 	
-	@IBOutlet weak var toolBar: UIToolbar!
+	//@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	
@@ -255,7 +255,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func generateMemedImage() -> UIImage {
 		// hide the tool and nav bars, so won't show in image
-		toolBar.hidden = true
+		self.navigationController?.toolbarHidden = true
+		//toolBar.hidden = true
 		navigationController?.navigationBar.hidden = true
 		
 		// Render view to an image, using a context
@@ -267,7 +268,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 		UIGraphicsEndImageContext()
 		
 		// return the tool and nav bars back to normal
-		toolBar.hidden = false
+		self.navigationController?.toolbarHidden = false
+		//toolBar.hidden = false
 		navigationController?.navigationBar.hidden = false
 		
 		return memedImage
