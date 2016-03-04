@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Sent Memes-->
+        <!--Sent Memes Table View-->
         <scene sceneID="uwq-4V-e4d">
             <objects>
-                <tableViewController id="MJA-D6-dHk" customClass="TableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="MJA-D6-dHk" userLabel="Sent Memes Table View" customClass="TableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fdz-B0-MyX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="nZi-1X-vyY" kind="show" action="showDetailViewController:sender:" id="EcS-QI-mgK"/>
+                                    <segue destination="vfa-4S-Olm" kind="show" id="QLl-f3-8lw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="1925" y="-1146"/>
         </scene>
-        <!--Sent Memes-->
+        <!--Sent Memes Collection View-->
         <scene sceneID="0kF-2X-I8p">
             <objects>
-                <collectionViewController id="rUk-nr-EeB" sceneMemberID="viewController">
+                <collectionViewController id="rUk-nr-EeB" userLabel="Sent Memes Collection View" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="iT1-rk-wgg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +99,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="nZi-1X-vyY" kind="show" action="showDetailViewController:sender:" id="km5-VV-uxB"/>
+                                    <segue destination="vfa-4S-Olm" kind="show" id="ZYf-aC-uTA"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -186,7 +186,7 @@
                         <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL">
                             <connections>
-                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="ExS-Am-qMn"/>
+                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="VQb-j8-j94"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
@@ -196,7 +196,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityButton" destination="M9l-7d-joL" id="Aqf-7f-RhS"/>
+                        <outlet property="activityButton" destination="M9l-7d-joL" id="rdQ-Ag-JUN"/>
                         <outlet property="albumButton" destination="ZCX-H4-T7W" id="Dhp-Nk-0K8"/>
                         <outlet property="bottomTextField" destination="KJv-m8-NTS" id="eV8-sW-sv3"/>
                         <outlet property="cameraButton" destination="KmG-nS-igt" id="9Mv-in-Meh"/>
@@ -258,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqO-d3-bbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3910" y="-576"/>
+            <point key="canvasLocation" x="3125" y="-568"/>
         </scene>
         <!--Collection Navigation Controller-->
         <scene sceneID="mfH-lz-P6t">
@@ -316,31 +316,13 @@
             </objects>
             <point key="canvasLocation" x="295" y="-805"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wd5-dR-DTJ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nZi-1X-vyY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SdT-ve-pXd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vfa-4S-Olm" kind="relationship" relationship="rootViewController" id="yW7-cH-vgM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6hG-Te-CpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3125" y="-576"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Collection_Icon" width="30" height="30"/>
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="km5-VV-uxB"/>
+        <segue reference="ZYf-aC-uTA"/>
         <segue reference="6wQ-W3-uxi"/>
     </inferredMetricsTieBreakers>
 </document>
