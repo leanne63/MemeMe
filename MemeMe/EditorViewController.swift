@@ -98,6 +98,18 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		memedImage = generateMemedImage()
 		
 		let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+		
+		/*
+		 * fixes crash on iPads, error message:
+		 * Terminating app due to uncaught exception 'NSGenericException', reason: 'UIPopoverPresentationController (<_UIAlertControllerActionSheetRegularPresentationController: 0x7fc7a874bd90>) should have a non-nil sourceView or barButtonItem set before the presentation occurs.'
+		 *
+		 * from: http://stackoverflow.com/questions/25644054/uiactivityviewcontroller-crashing-on-ios8-ipads?answertab=oldest#tab-top
+		 *
+		 * answer by: Martín Marconcini
+		 *
+		 */
+		activityViewController.popoverPresentationController?.barButtonItem = sender
+		
 		activityViewController.completionWithItemsHandler = {
 			(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -> Void in
 		
