@@ -15,12 +15,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" id="NdR-w3-DeM">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableTableCell" rowHeight="128" id="NdR-w3-DeM">
+                                <rect key="frame" x="0.0" y="92" width="600" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NdR-w3-DeM" id="SDb-Wc-9wN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-Fg-iK7" userLabel="Meme Image View">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="127"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top and Bottom Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Nn-dv8" userLabel="Meme Text">
+                                            <rect key="frame" x="300" y="0.0" width="300" height="127"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="3Uh-ZS-4Um"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="4gS-H1-yd5"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="ANX-4z-Aun"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="N54-Tm-NRk"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="width" secondItem="SDb-Wc-9wN" secondAttribute="width" multiplier="50%" id="Q4p-1A-kSE"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="width" secondItem="SDb-Wc-9wN" secondAttribute="width" multiplier="50%" id="TMa-vu-ZuW"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="trailing" secondItem="SDb-Wc-9wN" secondAttribute="trailing" id="gGm-Ro-bW0"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="qKh-v7-Dh2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="nZi-1X-vyY" kind="showDetail" id="EcS-QI-mgK"/>
@@ -308,7 +329,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6wQ-W3-uxi"/>
-        <segue reference="km5-VV-uxB"/>
+        <segue reference="EcS-QI-mgK"/>
+        <segue reference="USQ-3B-7bO"/>
     </inferredMetricsTieBreakers>
 </document>
