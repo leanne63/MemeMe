@@ -48,10 +48,21 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("reusableTableCell", forIndexPath: indexPath)
 		
 		let currentMeme = savedMemes[indexPath.row]
+		
+		let imageView = cell.viewWithTag(1) as! UIImageView
+		let label = cell.viewWithTag(2) as! UILabel
+		
+		imageView.contentMode = .ScaleAspectFill
+		imageView.image = currentMeme.memedImage
+		
+		label.text = currentMeme.topMemeText + "..." + currentMeme.bottomMemeText
 
-        cell.imageView?.image = currentMeme.memedImage
-		cell.textLabel?.text = currentMeme.topMemeText + currentMeme.bottomMemeText
-
+		print("\(++count) times through...")
+		print("imageView width: \(imageView.frame.width)")
+		print("label width: \(label.frame.width)")
+		print("text length: \(label.text?.characters.count)")
+		print("\n")
+		
         return cell
     }
 	
