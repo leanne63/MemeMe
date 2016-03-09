@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -23,25 +22,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-Fg-iK7" userLabel="Meme Image View">
-                                            <rect key="frame" x="8" y="8" width="180" height="115"/>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-Fg-iK7" userLabel="Meme Image View">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="131"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top and Bottom Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Nn-dv8" userLabel="Meme Text">
-                                            <rect key="frame" x="188" y="8" width="404" height="115"/>
+                                            <rect key="frame" x="180" y="0.0" width="420" height="131"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="top" secondItem="SDb-Wc-9wN" secondAttribute="topMargin" id="8KX-iU-wJD"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="bottom" secondItem="SDb-Wc-9wN" secondAttribute="bottomMargin" id="A8u-ph-L2R"/>
-                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="leading" secondItem="4JB-Fg-iK7" secondAttribute="trailing" id="Afq-2W-ueA"/>
-                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="bottom" secondItem="SDb-Wc-9wN" secondAttribute="bottomMargin" id="Oyw-FW-9az"/>
-                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="trailing" secondItem="SDb-Wc-9wN" secondAttribute="trailingMargin" id="Rx1-zi-49Z"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leadingMargin" id="TPg-ct-Q4h"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="width" secondItem="SDb-Wc-9wN" secondAttribute="width" multiplier="30%" id="mub-lI-z5c"/>
-                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="top" secondItem="SDb-Wc-9wN" secondAttribute="topMargin" id="vkl-ek-JQU"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="J1D-IV-AKi"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="R7D-Aq-erj"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="leading" secondItem="4JB-Fg-iK7" secondAttribute="trailing" id="W66-tU-ob7"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="width" secondItem="SDb-Wc-9wN" secondAttribute="width" multiplier="30%" id="c5y-Fg-05g"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="trailing" secondItem="SDb-Wc-9wN" secondAttribute="trailing" id="hWD-V4-W3b"/>
+                                        <constraint firstItem="NLi-Nn-dv8" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="lS0-GK-ayW"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="ntL-bb-CzV"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="z2I-Hd-B7E"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

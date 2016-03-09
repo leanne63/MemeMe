@@ -54,7 +54,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		activityButton.enabled = (memeImageView.image != nil) ? true : false
 		
 		subscribeToKeyboardNotifications()
-		subscribeToOrientationChangeNotifications()
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
@@ -62,7 +61,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		super.viewWillDisappear(animated)
 		
 		unsubscribeFromKeyboardNotifications()
-		unsubscribeToOrientationChangeNotifications()
 	}
 	
 	
@@ -210,21 +208,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			object: nil)
 	}
 	
-	func subscribeToOrientationChangeNotifications() {
-		
-		NSNotificationCenter.defaultCenter().removeObserver(self,
-			name: UIDeviceOrientationDidChangeNotification,
-			object: nil)
-	}
-	
-	func unsubscribeToOrientationChangeNotifications() {
-		
-		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "orientationWillChange:",
-			name: UIDeviceOrientationDidChangeNotification,
-			object: nil)
-	}
-	
 	
 	// MARK: - Respond to Notifications
 	
@@ -242,12 +225,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		if bottomTextField.isFirstResponder() {
 			view.frame.origin.y = 0
 		}
-	}
-	
-	func orientationWillChange(notification: NSNotification) {
-		
-		// when orientation changes, need to refresh layout
-		view.layoutSubviews()
 	}
 	
 	
