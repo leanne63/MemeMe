@@ -17,12 +17,6 @@ class TableViewController: UITableViewController {
 
 	// MARK: - Overrides
 	
-//	override func viewDidLoad() {
-//        super.viewDidLoad()
-//		
-//		subscribeToOrientationChangeNotifications()
-//    }
-	
 	override func viewWillAppear(animated: Bool) {
 		
 		savedMemes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
@@ -31,37 +25,6 @@ class TableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 	
-//	override func viewWillDisappear(animated: Bool) {
-//		
-//		unsubscribeToOrientationChangeNotifications()
-//	}
-	
-	
-	// MARK: - Subscribe/Unsubscribe to Notifications
-
-//	func subscribeToOrientationChangeNotifications() {
-//		
-//		NSNotificationCenter.defaultCenter().addObserver(self,
-//			selector: "orientationWillChange:",
-//			name: UIDeviceOrientationDidChangeNotification,
-//			object: nil)
-//	}
-//	
-//	func unsubscribeToOrientationChangeNotifications() {
-//		
-//		NSNotificationCenter.defaultCenter().removeObserver(self,
-//			name: UIDeviceOrientationDidChangeNotification,
-//			object: nil)
-//	}
-	
-	
-	// MARK: - Respond to Notifications
-	
-//	func orientationWillChange(notification: NSNotification) {
-//		
-//		// when orientation changes, need to refresh layout
-//		view.layoutSubviews()
-//	}
 
 	
 	// MARK: - Table view data source
@@ -72,7 +35,22 @@ class TableViewController: UITableViewController {
 		
 		let numRows = savedMemes.count
 		
-        return numRows
+		if numRows > 0 {
+			return numRows
+		}
+		else {
+			let emptyMessageLabel = UILabel(frame: CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
+			emptyMessageLabel.text = "No memes sent yet!\nPress + to create a new meme\nand share it."
+			emptyMessageLabel.numberOfLines = 0
+			emptyMessageLabel.font = UIFont(name: "Palatino-Italic", size: 20)
+			emptyMessageLabel.textAlignment = .Center
+			emptyMessageLabel.sizeToFit()
+			
+			tableView.backgroundView = emptyMessageLabel
+			tableView.separatorStyle = .None
+			
+			return 0
+		}
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
