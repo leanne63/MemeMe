@@ -35,6 +35,10 @@ class TableViewController: UITableViewController {
 		
 		let numRows = savedMemes.count
 		
+		// code modified from:
+		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table,
+		//	Simon Ng, 11 July 2014
+		//	http://www.appcoda.com/pull-to-refresh-uitableview-empty/
 		if numRows > 0 {
 			return numRows
 		}
