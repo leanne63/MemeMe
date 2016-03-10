@@ -71,53 +71,60 @@ class TableViewController: UITableViewController {
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		cellImageView.image = currentMeme.memedImage
 		
-		// set up text for label
-		// BABY HEDGEHOG SAYS - I NEED MY SPACE
-		// BABY HED...MY SPACE
-		
-		// COW BE LIKE - HANG TEN, BRAH
-		// COW BE LI...TEN, BRAH
-		
-		// TEST MEME - YOU'RE DOING IT WRONG
-		// TEST MEM...IT WRONG
-		
-		// SET UP - HILARIOUS PUNCHLINE
-		// SET UP...HI...UNCHLINE
-		
-		let topText = currentMeme.topMemeText
-		let bottomText = currentMeme.bottomMemeText
+		// set up text to go with meme image
 		let ellipsis = "..."
 		
-		// get applicable character counts
-		let numTopChars = topText.characters.count
-		let numBottomChars = bottomText.characters.count
-		let numEllipsisChars = ellipsis.characters.count
+		let maxNumCharsAvail = 22
+		let halfNumCharsAvail = maxNumCharsAvail / 2
 		
-		let totalNumChars = numTopChars + numBottomChars
-		let totalWithEllipsis = totalNumChars + numEllipsisChars
-		
-		let halfPoint = totalNumChars / 2
-		
-		// now, setup appropriate text for label
+		var remainingCharsAvail = maxNumCharsAvail
 		var labelText = ""
-		if numTopChars <= halfPoint {
+
+		let topText = currentMeme.topMemeText
+		let topTextLen = topText.characters.count
+		
+		if topTextLen <= halfNumCharsAvail {
 			labelText += topText
 		}
 		else {
-			// calculate num chars to show before ellipsis
-			labelText += "x"
+			// truncate top text to halfway point
+			let index = topText.startIndex.advancedBy(halfNumCharsAvail)
+			labelText += topText.substringToIndex(index)
 		}
+		
+		remainingCharsAvail -= labelText.characters.count
 		
 		labelText += ellipsis
 		
-		if numBottomChars <= halfPoint {
+		let bottomText = currentMeme.bottomMemeText
+		let bottomTextLen = bottomText.characters.count
+		
+		if bottomTextLen <= remainingCharsAvail {
 			labelText += bottomText
 		}
 		else {
-			// calculate num chars to show after ellipsis
-			labelText += "x"
+			// truncate bottom text to fit
+			if remainingCharsAvail <= halfNumCharsAvail {
+				// no room left over from the front, so simply truncate
+				let index = bottomText.endIndex.advancedBy(-(remainingCharsAvail))
+				labelText += bottomText.substringFromIndex(index)
+			}
+			else {
+				// room was left at the front, so split the truncation between front and back
+				// get remainder at front; fill it with beginning of bottom text
+				let numCharsLeftAtFront = remainingCharsAvail - halfNumCharsAvail
+				let frontIndex = bottomText.startIndex.advancedBy(numCharsLeftAtFront)
+				labelText += bottomText.substringToIndex(frontIndex)
+				
+				// add ellipsis
+				labelText += ellipsis
+				remainingCharsAvail = halfNumCharsAvail - ellipsis.characters.count
+				
+				// get remainder at end; fill with ending of bottom text
+				let backIndex = bottomText.endIndex.advancedBy(-(remainingCharsAvail))
+				labelText += bottomText.substringFromIndex(backIndex)
+			}
 		}
-		
 		
 		let cellLabel = cell.viewWithTag(2) as! UILabel
 		cellLabel.text = labelText
