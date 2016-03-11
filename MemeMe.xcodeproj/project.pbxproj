@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D50017C81C891D750087FE2E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50017C71C891D750087FE2E /* TableViewController.swift */; };
+		D50017D21C936F510087FE2E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50017D11C936F510087FE2E /* DetailViewController.swift */; };
 		D518D8EB1C7A21B200CF7E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518D8EA1C7A21B200CF7E56 /* AppDelegate.swift */; };
 		D518D8ED1C7A21B200CF7E56 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518D8EC1C7A21B200CF7E56 /* EditorViewController.swift */; };
 		D518D8F01C7A21B200CF7E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D518D8EE1C7A21B200CF7E56 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		D50017C71C891D750087FE2E /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D50017D11C936F510087FE2E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D518D8E71C7A21B200CF7E56 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D518D8EA1C7A21B200CF7E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D518D8EC1C7A21B200CF7E56 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				D518D8EC1C7A21B200CF7E56 /* EditorViewController.swift */,
 				D50017C71C891D750087FE2E /* TableViewController.swift */,
+				D50017D11C936F510087FE2E /* DetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				D518D8FD1C7CD25300CF7E56 /* Meme.swift in Sources */,
 				D518D8ED1C7A21B200CF7E56 /* EditorViewController.swift in Sources */,
+				D50017D21C936F510087FE2E /* DetailViewController.swift in Sources */,
 				D518D8EB1C7A21B200CF7E56 /* AppDelegate.swift in Sources */,
 				D50017C81C891D750087FE2E /* TableViewController.swift in Sources */,
 			);

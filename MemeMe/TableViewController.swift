@@ -27,6 +27,15 @@ class TableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		
+		if segue.identifier == "tableViewSegueToDetail" {
+			let controller = segue.destinationViewController as! DetailViewController
+			let cellImageView = (sender as! UITableViewCell).viewWithTag(1) as! UIImageView
+			controller.selectedImage = cellImageView.image
+		}
+	}
+	
 	
 	// MARK: - Table view data source
 

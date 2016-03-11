@@ -44,7 +44,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vfa-4S-Olm" kind="show" id="QLl-f3-8lw"/>
+                                    <segue destination="vfa-4S-Olm" kind="show" identifier="tableViewSegueToDetail" id="QLl-f3-8lw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -233,7 +233,7 @@
         <!--Meme Detail View Controller-->
         <scene sceneID="0bM-PZ-B23">
             <objects>
-                <viewController id="vfa-4S-Olm" userLabel="Meme Detail View Controller" sceneMemberID="viewController">
+                <viewController id="vfa-4S-Olm" userLabel="Meme Detail View Controller" customClass="DetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fwq-g1-4xk"/>
                         <viewControllerLayoutGuide type="bottom" id="k23-DS-8rG"/>
@@ -255,6 +255,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O5S-Gl-5O6"/>
+                    <connections>
+                        <outlet property="imageView" destination="75z-8M-Qc1" id="roB-S0-S8x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqO-d3-bbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
