@@ -10,16 +10,20 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-	// MARK: - Properties/Instance Variables
-	
-	var savedMemes: [Meme]!
-	
-
 	// MARK: - Overrides
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
-		savedMemes = (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+		navigationItem.leftBarButtonItem = editButtonItem()
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		let memeCount = (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
+		
+		navigationItem.leftBarButtonItem?.enabled = (memeCount > 0)
 
 		// reload table to ensure all memes are displayed
 		tableView.reloadData()
@@ -33,7 +37,8 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		let numRows = savedMemes.count
+		let memeCount = (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
+		let numRows = memeCount
 		
 		// code modified from:
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
@@ -66,7 +71,7 @@ class TableViewController: UITableViewController {
 		
         let cell = tableView.dequeueReusableCellWithIdentifier("reusableTableCell", forIndexPath: indexPath)
 		
-		let currentMeme = savedMemes[indexPath.row]
+		let currentMeme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		cellImageView.image = currentMeme.memedImage
@@ -132,4 +137,19 @@ class TableViewController: UITableViewController {
         return cell
     }
 	
+	
+	// MARK: - Table View Delegate
+	
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		
+		return true
+	}
+	
+	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		
+		if editingStyle == .Delete {
+			(UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		}
+	}
 }
