@@ -10,10 +10,19 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
+	// MARK: - Type (ie "Class") Properties
+	
+	static var memes = [Meme]()
+	
+	
+	// MARK: - Instance Properties
+	
 	var window: UIWindow?
-	var memes = [Meme]()
-
+	
+	
+	// MARK: - Instance Functions
+	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
 		return true

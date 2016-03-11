@@ -9,7 +9,7 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
+	
 	// MARK: - Overrides
 	
 	override func viewDidLoad() {
@@ -21,15 +21,12 @@ class TableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let memeCount = (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
-		
-		navigationItem.leftBarButtonItem?.enabled = (memeCount > 0)
+		navigationItem.leftBarButtonItem?.enabled = (AppDelegate.memes.count > 0)
 
 		// reload table to ensure all memes are displayed
 		tableView.reloadData()
 	}
 	
-
 	
 	// MARK: - Table view data source
 
@@ -37,8 +34,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		let memeCount = (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count
-		let numRows = memeCount
+		let numRows = AppDelegate.memes.count
 		
 		// code modified from:
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
@@ -71,7 +67,7 @@ class TableViewController: UITableViewController {
 		
         let cell = tableView.dequeueReusableCellWithIdentifier("reusableTableCell", forIndexPath: indexPath)
 		
-		let currentMeme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[indexPath.row]
+		let currentMeme = AppDelegate.memes[indexPath.row]
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		cellImageView.image = currentMeme.memedImage
@@ -148,7 +144,7 @@ class TableViewController: UITableViewController {
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == .Delete {
-			(UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+			AppDelegate.memes.removeAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 		}
 	}
