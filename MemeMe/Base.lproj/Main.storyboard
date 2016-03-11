@@ -99,7 +99,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="vfa-4S-Olm" kind="show" id="ZYf-aC-uTA"/>
+                                    <segue destination="vfa-4S-Olm" kind="show" identifier="collectionViewSegueToDetail" id="ZYf-aC-uTA"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -326,6 +326,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="USQ-3B-7bO"/>
-        <segue reference="QLl-f3-8lw"/>
+        <segue reference="ZYf-aC-uTA"/>
     </inferredMetricsTieBreakers>
 </document>
