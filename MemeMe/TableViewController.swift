@@ -10,7 +10,12 @@ import UIKit
 
 class TableViewController: UITableViewController {
 	
-	// MARK: - Overrides
+	// MARK: - Properties
+	
+	private let reuseIdentifier = "reusableTableCell"
+	
+	
+	// MARK: - Table View Overrides
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,13 +42,58 @@ class TableViewController: UITableViewController {
 	}
 	
 	
-	// MARK: - Table view data source
+	// MARK: - Table View Data Source
 
 	// using default number of sections (1), so no override for numberOfSections
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		let numRows = AppDelegate.memes.count
+		
+		setUpTableViewBackground(numRows)
+		
+		return numRows
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+		
+		let currentMeme = AppDelegate.memes[indexPath.row]
+		
+		let cellImageView = cell.viewWithTag(1) as! UIImageView
+		cellImageView.image = currentMeme.memedImage
+		
+		let topText = currentMeme.topMemeText
+		let bottomText = currentMeme.bottomMemeText
+		let labelText: String = setUpCellLabelText(topText, bottomText: bottomText)
+		
+		let cellLabel = cell.viewWithTag(2) as! UILabel
+		cellLabel.text = labelText
+
+        return cell
+    }
+	
+	
+	// MARK: - Table View Delegate
+	
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		
+		return true
+	}
+	
+	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		
+		if editingStyle == .Delete {
+			AppDelegate.memes.removeAtIndex(indexPath.row)
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		}
+	}
+	
+	
+	// MARK: - Utility Functions
+	
+	func setUpTableViewBackground(numRows: Int) {
 		
 		// code modified from:
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
@@ -68,31 +118,22 @@ class TableViewController: UITableViewController {
 				tableView.separatorStyle = .None
 			}
 		}
+	}
+	
+	func setUpCellLabelText(topText: String, bottomText: String) -> String {
 		
-		return numRows
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		
-        let cell = tableView.dequeueReusableCellWithIdentifier("reusableTableCell", forIndexPath: indexPath)
-		
-		let currentMeme = AppDelegate.memes[indexPath.row]
-		
-		let cellImageView = cell.viewWithTag(1) as! UIImageView
-		cellImageView.image = currentMeme.memedImage
-		
-		// set up text to go with meme image
 		let ellipsis = "..."
 		
 		let maxNumCharsAvail = 22
 		let halfNumCharsAvail = maxNumCharsAvail / 2
 		
+		let topTextLen = topText.characters.count
+		let bottomTextLen = bottomText.characters.count
+		
 		var remainingCharsAvail = maxNumCharsAvail
 		var labelText = ""
-
-		let topText = currentMeme.topMemeText
-		let topTextLen = topText.characters.count
 		
+		// set up first half label...
 		if topTextLen <= halfNumCharsAvail {
 			labelText += topText
 		}
@@ -106,9 +147,7 @@ class TableViewController: UITableViewController {
 		
 		labelText += ellipsis
 		
-		let bottomText = currentMeme.bottomMemeText
-		let bottomTextLen = bottomText.characters.count
-		
+		// set up second half label
 		if bottomTextLen <= remainingCharsAvail {
 			labelText += bottomText
 		}
@@ -136,25 +175,6 @@ class TableViewController: UITableViewController {
 			}
 		}
 		
-		let cellLabel = cell.viewWithTag(2) as! UILabel
-		cellLabel.text = labelText
-
-        return cell
-    }
-	
-	
-	// MARK: - Table View Delegate
-	
-	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		
-		return true
-	}
-	
-	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-		
-		if editingStyle == .Delete {
-			AppDelegate.memes.removeAtIndex(indexPath.row)
-			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-		}
+		return labelText
 	}
 }
