@@ -1,5 +1,5 @@
 //
-//  CollectionCollectionViewController.swift
+//  CollectionViewController.swift
 //  MemeMe
 //
 //  Created by leanne on 3/11/16.
@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "reusableCollectionCell"
 
-class CollectionCollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
