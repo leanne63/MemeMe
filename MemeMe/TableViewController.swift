@@ -12,10 +12,10 @@ class TableViewController: UITableViewController {
 	
 	// MARK: - Properties
 	
-	private let reuseIdentifier = "reusableTableCell"
+	let tableCellReuseIdentifier = "reusableTableCell"
 	
 	
-	// MARK: - Table View Overrides
+	// MARK: - Table View Controller Overrides
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -57,7 +57,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableCellReuseIdentifier, forIndexPath: indexPath)
 		
 		let currentMeme = AppDelegate.memes[indexPath.row]
 		
@@ -99,6 +99,10 @@ class TableViewController: UITableViewController {
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
 		//	Simon Ng, 11 July 2014
 		//	http://www.appcoda.com/pull-to-refresh-uitableview-empty/
+		let emptyMessageText = "No memes sent yet!\nPress + to create a new meme\nand share it."
+		let fontName = "Palatino-Italic"
+		let fontSize: CGFloat = 20.0
+		
 		if numRows > 0 {
 			if tableView.backgroundView != nil {
 				tableView.backgroundView = nil
@@ -108,9 +112,9 @@ class TableViewController: UITableViewController {
 		else {
 			if tableView.backgroundView == nil {
 				let emptyMessageLabel = UILabel(frame: CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
-				emptyMessageLabel.text = "No memes sent yet!\nPress + to create a new meme\nand share it."
+				emptyMessageLabel.text = emptyMessageText
 				emptyMessageLabel.numberOfLines = 0
-				emptyMessageLabel.font = UIFont(name: "Palatino-Italic", size: 20)
+				emptyMessageLabel.font = UIFont(name: fontName, size: fontSize)
 				emptyMessageLabel.textAlignment = .Center
 				emptyMessageLabel.sizeToFit()
 				
