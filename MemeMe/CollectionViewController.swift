@@ -8,11 +8,8 @@
 
 import UIKit
 
-// TODO: resize collection view cell (must define custom cell???)
 // TODO: collection view delete - how?
 // TODO: edit button stays enabled after all memes have been deleted
-// TODO: change text on background view to say "No memes are available to display!"
-// TODO: extension for background view (so shared between table and collection view controllers)
 
 class CollectionViewController: UICollectionViewController {
 

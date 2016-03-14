@@ -66,7 +66,7 @@ class TableViewController: UITableViewController {
 		
 		let topText = currentMeme.topMemeText
 		let bottomText = currentMeme.bottomMemeText
-		let labelText: String = setUpCellLabelText(topText, bottomText: bottomText)
+		let labelText: String = generateLabelText(topText, bottomText: bottomText)
 		
 		let cellLabel = cell.viewWithTag(2) as! UILabel
 		cellLabel.text = labelText
@@ -124,7 +124,7 @@ class TableViewController: UITableViewController {
 		}
 	}
 	
-	func setUpCellLabelText(topText: String, bottomText: String) -> String {
+	func generateLabelText(topText: String, bottomText: String) -> String {
 		
 		let ellipsis = "..."
 		
