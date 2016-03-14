@@ -12,7 +12,7 @@ import UIKit
 // TODO: collection view delete - how?
 // TODO: edit button stays enabled after all memes have been deleted
 // TODO: change text on background view to say "No memes are available to display!"
-// TODO: category(?) for background view (so shared between table and collection view controllers)
+// TODO: extension for background view (so shared between table and collection view controllers)
 
 class CollectionViewController: UICollectionViewController {
 
@@ -47,8 +47,8 @@ class CollectionViewController: UICollectionViewController {
 		}
     }
 	
-
-    // MARK: Collection View Data Source
+	
+	// MARK: Collection View Data Source
 
 	// using default number of sections (1), so no override for numberOfSections
 	
