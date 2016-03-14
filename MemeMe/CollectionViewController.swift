@@ -8,9 +8,6 @@
 
 import UIKit
 
-// TODO: collection view delete - how?
-// TODO: edit button stays enabled after all memes have been deleted
-
 class CollectionViewController: UICollectionViewController {
 
 	// MARK: - Properties
