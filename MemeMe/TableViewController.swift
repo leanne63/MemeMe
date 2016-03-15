@@ -26,7 +26,12 @@ class TableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		navigationItem.leftBarButtonItem?.enabled = (AppDelegate.memes.count > 0)
+		let numMemes = AppDelegate.memes.count
+		let isEmpty = (numMemes == 0)
+		
+		navigationItem.leftBarButtonItem?.enabled = !isEmpty
+		
+		setUpTableViewBackground(isEmpty)
 
 		// reload table to ensure all memes are displayed
 		tableView.reloadData()
@@ -49,8 +54,6 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		let numRows = AppDelegate.memes.count
-		
-		setUpTableViewBackground(numRows)
 		
 		return numRows
     }
@@ -93,17 +96,18 @@ class TableViewController: UITableViewController {
 	
 	// MARK: - Utility Functions
 	
-	func setUpTableViewBackground(numRows: Int) {
+	func setUpTableViewBackground(isEmpty: Bool) {
 		
 		// code modified from:
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
 		//	Simon Ng, 11 July 2014
 		//	http://www.appcoda.com/pull-to-refresh-uitableview-empty/
+		
 		let emptyMessageText = "No memes sent yet!\nPress + to create a new meme\nand share it."
 		let fontName = "Palatino-Italic"
 		let fontSize: CGFloat = 20.0
 		
-		if numRows > 0 {
+		if !isEmpty {
 			if tableView.backgroundView != nil {
 				tableView.backgroundView = nil
 				tableView.separatorStyle = .SingleLine
