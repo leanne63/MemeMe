@@ -10,7 +10,7 @@ import UIKit
 
 class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
-	// MARK: - Outlets
+	// MARK: - Properties (Outlets)
 	
 	@IBOutlet weak var memeImageView: UIImageView!
 	
@@ -23,7 +23,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	@IBOutlet weak var activityButton: UIBarButtonItem!
 	
-	// MARK: - Properties
+	// MARK: - Properties (Non-Outlets)
 	
 	// setting text constants for use as needed
 	let defaultTopText = "TOP"

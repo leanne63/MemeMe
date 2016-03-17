@@ -40,9 +40,12 @@ class CollectionViewController: UICollectionViewController {
 		switch segueId {
 			
 		case "collectionViewSegueToDetail":
+			let sendingCell = sender as! UICollectionViewCell
+			let sendingCellIndexPath = collectionView!.indexPathForCell(sendingCell)!
+			let selectedMeme = sendingCellIndexPath.row
+			
 			let controller = segue.destinationViewController as! DetailViewController
-			let cellImageView = (sender as! UICollectionViewCell).viewWithTag(1) as! UIImageView
-			controller.selectedImage = cellImageView.image
+			controller.selectedMeme = AppDelegate.memes[selectedMeme]
 			
 		case "collectionViewSegueToEditor":
 			// this controller is starting a segue to the editor, so unwind needs to return here

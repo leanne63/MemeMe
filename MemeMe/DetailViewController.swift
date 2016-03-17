@@ -10,12 +10,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 	
-	// MARK: - Properties
+	// MARK: - Properties (Non-Outlets)
 	
-	var selectedImage: UIImage!
+	var selectedMeme: Meme!
 	
 	
-	// MARK: - Outlets
+	// MARK: - Properties (Outlets)
 	
 	@IBOutlet weak var imageView: UIImageView!
 	
@@ -25,17 +25,27 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		imageView.image = selectedImage
+		imageView.image = selectedMeme.memedImage
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+		
+		guard let segueId = segue.identifier else {
+			return
+		}
+		
+		switch segueId {
+			
+		case "detailViewSegueToEditor":
+			let controller = segue.destinationViewController as! EditorViewController
+			controller.topTextField.text = selectedMeme.topMemeText
+			controller.bottomTextField.text = selectedMeme.bottomMemeText
+			controller.memeImageView.image = selectedMeme.originalImage
+			controller.memedImage = selectedMeme.memedImage
+			
+		default:
+			print("invalid segue")
+		}
     }
-    */
-
+	
 }

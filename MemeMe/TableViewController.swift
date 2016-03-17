@@ -48,9 +48,12 @@ class TableViewController: UITableViewController {
 		switch segueId {
 			
 		case "tableViewSegueToDetail":
+			let sendingCell = sender as! UITableViewCell
+			let sendingCellIndexPath = tableView.indexPathForCell(sendingCell)!
+			let selectedMeme = sendingCellIndexPath.row
+			
 			let controller = segue.destinationViewController as! DetailViewController
-			let cellImageView = (sender as! UITableViewCell).viewWithTag(1) as! UIImageView
-			controller.selectedImage = cellImageView.image
+			controller.selectedMeme = AppDelegate.memes[selectedMeme]
 			
 		case "tableViewSegueToEditor":
 			// this controller is starting a segue to the editor, so unwind needs to return here
