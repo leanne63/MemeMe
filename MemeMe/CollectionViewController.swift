@@ -14,6 +14,8 @@ class CollectionViewController: UICollectionViewController {
 	
 	let collectionCellReuseIdentifier = "reusableCollectionCell"
 	
+	var startedEditorSegue = false
+	
 	
 	// MARK: - Collection View Controller Overrides
 	
@@ -31,12 +33,37 @@ class CollectionViewController: UICollectionViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
-		if segue.identifier == "collectionViewSegueToDetail" {
+		guard let segueId = segue.identifier else {
+			return
+		}
+		
+		switch segueId {
+			
+		case "collectionViewSegueToDetail":
 			let controller = segue.destinationViewController as! DetailViewController
 			let cellImageView = (sender as! UICollectionViewCell).viewWithTag(1) as! UIImageView
 			controller.selectedImage = cellImageView.image
+			
+		case "collectionViewSegueToEditor":
+			startedEditorSegue = true
+			
+		default:
+			print("invalid segue")
 		}
     }
+	
+	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+		
+		return startedEditorSegue
+	}
+	
+	
+	// MARK: - Actions
+	
+	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
+		
+		startedEditorSegue = false
+	}
 	
 	
 	// MARK: Collection View Data Source

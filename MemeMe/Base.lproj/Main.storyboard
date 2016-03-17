@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="jhL-0a-jAU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS">
                             <connections>
-                                <segue destination="GfS-Cm-mkW" kind="show" id="USQ-3B-7bO"/>
+                                <segue destination="GfS-Cm-mkW" kind="show" identifier="tableViewSegueToEditor" id="USQ-3B-7bO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -127,7 +127,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="bDK-BP-3ui">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i">
                             <connections>
-                                <segue destination="GfS-Cm-mkW" kind="show" id="6wQ-W3-uxi"/>
+                                <segue destination="GfS-Cm-mkW" kind="show" identifier="collectionViewSegueToEditor" id="6wQ-W3-uxi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -207,7 +207,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
                             <connections>
-                                <action selector="cancelMemeEditor:" destination="BYZ-38-t0r" id="3fk-Ux-1SX"/>
+                                <segue destination="4SG-2S-z7y" kind="unwind" unwindAction="unwindFromEditor:" id="Rv4-t0-kM6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -221,6 +221,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="4SG-2S-z7y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3937" y="-1318"/>
         </scene>
@@ -341,7 +342,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYf-aC-uTA"/>
-        <segue reference="6wQ-W3-uxi"/>
+        <segue reference="QLl-f3-8lw"/>
+        <segue reference="USQ-3B-7bO"/>
     </inferredMetricsTieBreakers>
 </document>

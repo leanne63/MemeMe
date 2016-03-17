@@ -123,25 +123,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		presentViewController(activityViewController, animated: true, completion: nil)
 	}
 	
-	@IBAction func cancelMemeEditor(sender: UIBarButtonItem) {
-		
-		// return to default state
-		topTextField.attributedText = NSAttributedString(string: defaultTopText)
-		bottomTextField.attributedText = NSAttributedString(string: defaultBottomText)
-		
-		memeImageView.image = nil
-		
-		activityButton.enabled = false
-		
-		if topTextField.isFirstResponder() {
-			dismissKeyboard(topTextField)
-			
-		}
-		else if bottomTextField.isFirstResponder() {
-			dismissKeyboard(bottomTextField)
-		}
-	}
-	
 	
 	// MARK: - Image Picker Delegate Methods
 	

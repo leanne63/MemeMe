@@ -14,6 +14,8 @@ class TableViewController: UITableViewController {
 	
 	let tableCellReuseIdentifier = "reusableTableCell"
 	
+	var startedEditorSegue = false
+	
 	
 	// MARK: - Table View Controller Overrides
 	
@@ -39,11 +41,36 @@ class TableViewController: UITableViewController {
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
-		if segue.identifier == "tableViewSegueToDetail" {
+		guard let segueId = segue.identifier else {
+			return
+		}
+		
+		switch segueId {
+			
+		case "tableViewSegueToDetail":
 			let controller = segue.destinationViewController as! DetailViewController
 			let cellImageView = (sender as! UITableViewCell).viewWithTag(1) as! UIImageView
 			controller.selectedImage = cellImageView.image
+			
+		case "tableViewSegueToEditor":
+			startedEditorSegue = true
+		
+		default:
+			print("invalid segue")
 		}
+	}
+	
+	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+		
+		return startedEditorSegue
+	}
+	
+	
+	// MARK: - Actions
+	
+	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
+		
+		startedEditorSegue = false
 	}
 	
 	
