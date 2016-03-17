@@ -149,11 +149,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZV6-Av-vw3" userLabel="Meme Image View">
-                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT PLACEHOLDER" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYr-Dr-9cE" userLabel="Top Text Field">
-                                <rect key="frame" x="0.0" y="85" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1mY-Vc-hYa"/>
                                 </constraints>
@@ -161,7 +161,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM TEXT PLACEHOLDER" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KJv-m8-NTS" userLabel="Bottom Text Field">
-                                <rect key="frame" x="0.0" y="413" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="450" width="600" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iJm-Vr-8hn"/>
                                 </constraints>
