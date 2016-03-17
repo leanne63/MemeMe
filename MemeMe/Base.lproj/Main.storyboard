@@ -271,7 +271,13 @@
                             <constraint firstItem="75z-8M-Qc1" firstAttribute="centerY" secondItem="5tA-9w-mMH" secondAttribute="centerY" id="urm-Pg-smw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="O5S-Gl-5O6"/>
+                    <navigationItem key="navigationItem" title="Meme Detail" id="O5S-Gl-5O6">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="1u2-dA-wOt">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="detailViewSegueToEditor" id="QVN-cF-3Q2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="75z-8M-Qc1" id="roB-S0-S8x"/>
                     </connections>
@@ -344,5 +350,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="QLl-f3-8lw"/>
         <segue reference="USQ-3B-7bO"/>
+        <segue reference="QVN-cF-3Q2"/>
     </inferredMetricsTieBreakers>
 </document>
