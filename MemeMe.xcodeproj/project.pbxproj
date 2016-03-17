@@ -85,9 +85,9 @@
 		D50017CA1C891DD80087FE2E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D518D8EC1C7A21B200CF7E56 /* EditorViewController.swift */,
 				D50017C71C891D750087FE2E /* TableViewController.swift */,
 				D50017D31C9382BE0087FE2E /* CollectionViewController.swift */,
+				D518D8EC1C7A21B200CF7E56 /* EditorViewController.swift */,
 				D50017D11C936F510087FE2E /* DetailViewController.swift */,
 			);
 			name = "View Controllers";
