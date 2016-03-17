@@ -38,10 +38,9 @@ class DetailViewController: UIViewController {
 			
 		case "detailViewSegueToEditor":
 			let controller = segue.destinationViewController as! EditorViewController
-			controller.topTextField.text = selectedMeme.topMemeText
-			controller.bottomTextField.text = selectedMeme.bottomMemeText
-			controller.memeImageView.image = selectedMeme.originalImage
-			controller.memedImage = selectedMeme.memedImage
+			controller.defaultTopText = selectedMeme.topMemeText
+			controller.defaultBottomText = selectedMeme.bottomMemeText
+			controller.selectedImage = selectedMeme.originalImage
 			
 		default:
 			print("invalid segue")

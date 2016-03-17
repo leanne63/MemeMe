@@ -25,10 +25,10 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Properties (Non-Outlets)
 	
-	// setting text constants for use as needed
-	let defaultTopText = "TOP"
-	let defaultBottomText = "BOTTOM"
+	var defaultTopText = "TOP"
+	var defaultBottomText = "BOTTOM"
 	
+	var selectedImage: UIImage!
 	var memedImage: UIImage!
 	
 	
@@ -42,6 +42,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		setCommonFontStyling(topTextField)
 		setCommonFontStyling(bottomTextField)
+		
+		topTextField.text = defaultTopText
+		bottomTextField.text = defaultBottomText
+		if let anImage = selectedImage {
+			memeImageView.image = anImage
+		}
 	}
 	
 	override func viewWillAppear(animated: Bool) {
