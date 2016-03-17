@@ -53,6 +53,7 @@ class TableViewController: UITableViewController {
 			controller.selectedImage = cellImageView.image
 			
 		case "tableViewSegueToEditor":
+			// this controller is starting a segue to the editor, so unwind needs to return here
 			startedEditorSegue = true
 		
 		default:
@@ -62,6 +63,7 @@ class TableViewController: UITableViewController {
 	
 	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
 		
+		// if we started the segue, then we can handle it; otherwise, pass
 		return startedEditorSegue
 	}
 	
@@ -70,6 +72,8 @@ class TableViewController: UITableViewController {
 	
 	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
 		
+		// the editor's unwind came here; all we need do is revert the indicator
+		//	to false, so it's valid for the next unwind action
 		startedEditorSegue = false
 	}
 	
@@ -107,16 +111,26 @@ class TableViewController: UITableViewController {
 	
 	// MARK: - Table View Delegate
 	
+	// required to allow row deletion
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		
 		return true
 	}
 	
+	// do the deletion
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == .Delete {
 			AppDelegate.memes.removeAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+			
+			// Done button doesn't change back automatically (as of Xcode 7, iOS 9),
+			//	so let's save the user some effort and change it back for them
+			if AppDelegate.memes.count == 0 {
+				let editButton = navigationItem.leftBarButtonItem!
+				editButton.title = "Edit"
+				editButton.enabled = false
+			}
 		}
 	}
 	

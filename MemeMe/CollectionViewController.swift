@@ -45,6 +45,7 @@ class CollectionViewController: UICollectionViewController {
 			controller.selectedImage = cellImageView.image
 			
 		case "collectionViewSegueToEditor":
+			// this controller is starting a segue to the editor, so unwind needs to return here
 			startedEditorSegue = true
 			
 		default:
@@ -54,6 +55,7 @@ class CollectionViewController: UICollectionViewController {
 	
 	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
 		
+		// if we started the segue, then we can handle it; otherwise, pass
 		return startedEditorSegue
 	}
 	
@@ -62,6 +64,8 @@ class CollectionViewController: UICollectionViewController {
 	
 	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
 		
+		// the editor's unwind came here; all we need do is revert the indicator
+		//	to false, so it's valid for the next unwind action
 		startedEditorSegue = false
 	}
 	
