@@ -207,7 +207,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
                             <connections>
-                                <segue destination="4SG-2S-z7y" kind="unwind" unwindAction="unwindFromEditor:" id="Rv4-t0-kM6"/>
+                                <segue destination="4SG-2S-z7y" kind="unwind" identifier="unwindSegueFromEditor" unwindAction="unwindFromEditor:" id="Rv4-t0-kM6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
