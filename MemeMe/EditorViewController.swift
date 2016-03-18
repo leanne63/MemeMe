@@ -72,6 +72,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Actions
 	
+	@IBAction func cancelEditing(sender: UIBarButtonItem) {
+		
+		performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
+	}
+	
 	@IBAction func pickAMemeImage(sender: UIBarButtonItem) {
 		
 		let imagePickerController = UIImagePickerController()
@@ -122,7 +127,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			if completed {
 				self.saveMeme()
 				
-				self.dismissViewControllerAnimated(true, completion: nil)
+				self.performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
 			}
 		}
 		

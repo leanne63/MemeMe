@@ -207,7 +207,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
                             <connections>
-                                <segue destination="4SG-2S-z7y" kind="unwind" identifier="unwindSegueFromEditor" unwindAction="unwindFromEditor:" id="Rv4-t0-kM6"/>
+                                <action selector="cancelEditing:" destination="BYZ-38-t0r" id="sNZ-ju-O99"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -218,6 +218,7 @@
                         <outlet property="cameraButton" destination="KmG-nS-igt" id="9Mv-in-Meh"/>
                         <outlet property="memeImageView" destination="ZV6-Av-vw3" id="5lm-Lc-u5C"/>
                         <outlet property="topTextField" destination="QYr-Dr-9cE" id="hzK-00-aAW"/>
+                        <segue destination="4SG-2S-z7y" kind="unwind" identifier="unwindSegueFromEditor" unwindAction="unwindFromEditor:" id="ac1-oV-P0p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -348,7 +349,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYf-aC-uTA"/>
+        <segue reference="QLl-f3-8lw"/>
         <segue reference="PqV-BB-ItG"/>
     </inferredMetricsTieBreakers>
 </document>
