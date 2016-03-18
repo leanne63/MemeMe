@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
 			controller.cameFromDetail = true
 			
 		default:
-			print("invalid segue")
+			print("unknown segue: \(segueId)")
 		}
     }
 	

@@ -15,7 +15,6 @@ class TableViewController: UITableViewController {
 	let tableCellReuseIdentifier = "reusableTableCell"
 	
 	var startedEditorSegue = false
-	var startedDetailSegue = false
 	
 	
 	// MARK: - Table View Controller Overrides
@@ -56,24 +55,19 @@ class TableViewController: UITableViewController {
 			let controller = segue.destinationViewController as! DetailViewController
 			controller.selectedMeme = AppDelegate.memes[selectedMeme]
 			
-			// this controller is starting a segue to the detail view, so unwind needs to return here
-			startedDetailSegue = true
-			
 		case "tableViewSegueToEditor":
 			// this controller is starting a segue to the editor, so unwind needs to return here
 			startedEditorSegue = true
 		
 		default:
-			print("invalid segue")
+			print("unknown segue: \(segueId)")
 		}
 	}
 	
 	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
 		
-		print("tableView's \(__FUNCTION__)")
-		print(startedDetailSegue || startedEditorSegue)
 		// if we started the segue, then we can handle it; otherwise, pass
-		return startedEditorSegue || startedDetailSegue
+		return startedEditorSegue
 	}
 	
 	
@@ -81,11 +75,9 @@ class TableViewController: UITableViewController {
 	
 	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
 		
-		print("tableView's \(__FUNCTION__)")
 		// the editor's unwind came here; all we need do is revert the indicator
 		//	to false, so it's valid for the next unwind action
 		startedEditorSegue = false
-		startedDetailSegue = false
 	}
 	
 	

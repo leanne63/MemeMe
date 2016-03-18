@@ -104,7 +104,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			sourceType = .Camera
 			
 		default:
-			print("invalid sender")
+			print("unknown sender: \(sender)")
 			return
 		}
 		
@@ -136,6 +136,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			if completed {
 				self.saveMeme()
 				
+				// TODO: fix this...
+				// MemeMe[32328:3792889] Unbalanced calls to begin/end appearance transitions for <MemeMe.DetailViewController: 0x7fc34ad1a230>.
+				// suspicion: I need to somehow dismiss DetailViewController before unwind; however, unwind should do that automatically, yes?
+				// cameFromDetail is true if we came to self (EditorViewController) via the DetailViewController rather than
+				//	Table/CollectionViewController's + (add) button
+				print("cameFromDetail: \(self.cameFromDetail)")
 				self.performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
 			}
 		}
