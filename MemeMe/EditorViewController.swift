@@ -77,9 +77,11 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBAction func cancelEditing(sender: UIBarButtonItem) {
 		
 		if cameFromDetail == true {
+			// return to detail view instead of table/collection
 			dismissViewControllerAnimated(true, completion: nil)
 		}
 		else {
+			// return to table/collection
 			performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
 		}
 	}
