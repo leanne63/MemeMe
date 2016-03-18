@@ -25,6 +25,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Properties (Non-Outlets)
 	
+	var cameFromDetail = false
+	
 	var defaultTopText = "TOP"
 	var defaultBottomText = "BOTTOM"
 	
@@ -74,7 +76,12 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	@IBAction func cancelEditing(sender: UIBarButtonItem) {
 		
-		performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
+		if cameFromDetail == true {
+			dismissViewControllerAnimated(true, completion: nil)
+		}
+		else {
+			performSegueWithIdentifier("unwindSegueFromEditor", sender: self)
+		}
 	}
 	
 	@IBAction func pickAMemeImage(sender: UIBarButtonItem) {

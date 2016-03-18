@@ -43,6 +43,8 @@ class DetailViewController: UIViewController {
 			controller.defaultBottomText = selectedMeme.bottomMemeText
 			controller.selectedImage = selectedMeme.originalImage
 			
+			controller.cameFromDetail = true
+			
 		default:
 			print("invalid segue")
 		}
