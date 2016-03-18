@@ -14,7 +14,10 @@ class TableViewController: UITableViewController {
 	
 	let tableCellReuseIdentifier = "reusableTableCell"
 	
+	// indicates whether this controller initiated a segue
+	//  used to determine whether this controller can respond to an unwind request
 	var startedEditorSegue = false
+	var startedDetailSegue = false
 	
 	
 	// MARK: - Table View Controller Overrides
@@ -55,8 +58,9 @@ class TableViewController: UITableViewController {
 			let controller = segue.destinationViewController as! DetailViewController
 			controller.selectedMeme = AppDelegate.memes[selectedMeme]
 			
+			startedDetailSegue = true
+			
 		case "tableViewSegueToEditor":
-			// this controller is starting a segue to the editor, so unwind needs to return here
 			startedEditorSegue = true
 		
 		default:
@@ -67,7 +71,16 @@ class TableViewController: UITableViewController {
 	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
 		
 		// if we started the segue, then we can handle it; otherwise, pass
-		return startedEditorSegue
+		switch action {
+			
+		case "unwindFromEditor:":
+			let isUnwindResponder = startedDetailSegue || startedEditorSegue
+			
+			return isUnwindResponder
+			
+		default:
+			return false
+		}
 	}
 	
 	
@@ -78,6 +91,7 @@ class TableViewController: UITableViewController {
 		// the editor's unwind came here; all we need do is revert the indicator
 		//	to false, so it's valid for the next unwind action
 		startedEditorSegue = false
+		startedDetailSegue = false
 	}
 	
 	
@@ -133,6 +147,9 @@ class TableViewController: UITableViewController {
 				let editButton = navigationItem.leftBarButtonItem!
 				editButton.title = "Edit"
 				editButton.enabled = false
+				
+				let isEmpty = true
+				setUpTableViewBackground(isEmpty)
 			}
 		}
 	}

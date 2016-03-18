@@ -14,7 +14,10 @@ class CollectionViewController: UICollectionViewController {
 	
 	let collectionCellReuseIdentifier = "reusableCollectionCell"
 	
+	// indicates whether this controller initiated a segue
+	//  used to determine whether this controller can respond to an unwind request
 	var startedEditorSegue = false
+	var startedDetailSegue = false
 	
 	
 	// MARK: - Collection View Controller Overrides
@@ -28,7 +31,7 @@ class CollectionViewController: UICollectionViewController {
 		setUpCollectionViewBackground(isEmpty)
 		
 		// reload collection to ensure all memes are displayed
-		collectionView?.reloadData()
+		collectionView!.reloadData()
 	}
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -47,8 +50,9 @@ class CollectionViewController: UICollectionViewController {
 			let controller = segue.destinationViewController as! DetailViewController
 			controller.selectedMeme = AppDelegate.memes[selectedMeme]
 			
+			startedDetailSegue = true
+			
 		case "collectionViewSegueToEditor":
-			// this controller is starting a segue to the editor, so unwind needs to return here
 			startedEditorSegue = true
 			
 		default:
@@ -59,7 +63,16 @@ class CollectionViewController: UICollectionViewController {
 	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
 		
 		// if we started the segue, then we can handle it; otherwise, pass
-		return startedEditorSegue
+		switch action {
+			
+		case "unwindFromEditor:":
+			let isUnwindResponder = startedDetailSegue || startedEditorSegue
+			
+			return isUnwindResponder
+			
+		default:
+			return false
+		}
 	}
 	
 	
@@ -70,6 +83,7 @@ class CollectionViewController: UICollectionViewController {
 		// the editor's unwind came here; all we need do is revert the indicator
 		//	to false, so it's valid for the next unwind action
 		startedEditorSegue = false
+		startedDetailSegue = false
 	}
 	
 	
