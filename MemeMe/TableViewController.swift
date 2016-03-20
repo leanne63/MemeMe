@@ -31,7 +31,7 @@ class TableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let numMemes = AppDelegate.memes.count
+		let numMemes = Meme.allMemes.count
 		let isEmpty = (numMemes == 0)
 		
 		navigationItem.leftBarButtonItem?.enabled = !isEmpty
@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
 			let selectedMeme = sendingCellIndexPath.row
 			
 			let controller = segue.destinationViewController as! DetailViewController
-			controller.selectedMeme = AppDelegate.memes[selectedMeme]
+			controller.selectedMeme = Meme.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
 			
@@ -101,7 +101,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		let numRows = AppDelegate.memes.count
+		let numRows = Meme.allMemes.count
 		
 		return numRows
     }
@@ -110,7 +110,7 @@ class TableViewController: UITableViewController {
 		
         let cell = tableView.dequeueReusableCellWithIdentifier(tableCellReuseIdentifier, forIndexPath: indexPath)
 		
-		let currentMeme = AppDelegate.memes[indexPath.row]
+		let currentMeme = Meme.allMemes[indexPath.row]
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		cellImageView.image = currentMeme.memedImage
@@ -138,12 +138,12 @@ class TableViewController: UITableViewController {
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == .Delete {
-			AppDelegate.memes.removeAtIndex(indexPath.row)
+			Meme.allMemes.removeAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 			
 			// Done button doesn't change back automatically (as of Xcode 7, iOS 9),
 			//	so let's save the user some effort and change it back for them
-			if AppDelegate.memes.count == 0 {
+			if Meme.allMemes.count == 0 {
 				let editButton = navigationItem.leftBarButtonItem!
 				editButton.title = "Edit"
 				editButton.enabled = false
