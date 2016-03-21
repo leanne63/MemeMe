@@ -12,12 +12,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 	// MARK: - Properties (Outlets)
 	
+	@IBOutlet weak var navBar: UINavigationBar!
+	@IBOutlet weak var toolBar: UIToolbar!
+	
 	@IBOutlet weak var memeImageView: UIImageView!
 	
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
 	
-	//@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var albumButton: UIBarButtonItem!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	
@@ -53,7 +55,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	override func viewWillAppear(animated: Bool) {
-		
 		super.viewWillAppear(animated)
 		
 		albumButton.enabled = UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
@@ -65,7 +66,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
-		
 		super.viewWillDisappear(animated)
 		
 		unsubscribeFromKeyboardNotifications()
@@ -268,9 +268,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	func generateMemedImage() -> UIImage {
 		// hide the tool and nav bars, so won't show in image
-		self.navigationController?.toolbarHidden = true
-		//toolBar.hidden = true
-		navigationController?.navigationBar.hidden = true
+		navBar.hidden = true
+		toolBar.hidden = true
 		
 		// Render view to an image, using a context
 		UIGraphicsBeginImageContext(self.view.frame.size)
@@ -281,9 +280,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		UIGraphicsEndImageContext()
 		
 		// return the tool and nav bars back to normal
-		self.navigationController?.toolbarHidden = false
-		//toolBar.hidden = false
-		navigationController?.navigationBar.hidden = false
+		navBar.hidden = false
+		toolBar.hidden = false
 		
 		return memedImage
 	}
