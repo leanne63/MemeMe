@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -57,7 +58,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="jhL-0a-jAU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="tableViewSegueToEditor" id="EUV-Qu-xyZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="T6a-c7-ag4">
                         <autoresizingMask key="autoresizingMask"/>
@@ -121,7 +126,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="bDK-BP-3ui">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="collectionViewSegueToEditor" id="Yn3-8T-rGO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOm-UB-0Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +169,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-eT-c35">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-eT-c35">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
@@ -178,7 +187,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1P-Gj-cqA">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1P-Gj-cqA">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JGD-Ch-OhM"/>
@@ -199,15 +208,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="1QO-25-eoa"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="centerY" secondItem="ZV6-Av-vw3" secondAttribute="centerY" multiplier="35%" id="94b-iE-YLP"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="A9B-Y8-ahs"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="width" secondItem="ZV6-Av-vw3" secondAttribute="width" id="GhD-yx-nzs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w1P-Gj-cqA" secondAttribute="bottom" id="HCK-Xx-n7T"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="width" secondItem="ZV6-Av-vw3" secondAttribute="width" id="IHQ-jI-5Xm"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="Pqr-h9-h22"/>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Url-67-wpz"/>
+                            <constraint firstItem="w1P-Gj-cqA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="W7X-Su-BZt"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aW0-5B-hcg"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lO6-OK-F0C"/>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="n4N-eq-16g"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerY" secondItem="ZV6-Av-vw3" secondAttribute="centerY" multiplier="1.5" id="pbK-GB-LGg"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tEq-Pv-vQY"/>
+                            <constraint firstItem="w1P-Gj-cqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="vD8-fq-XpK"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="wNw-SO-6qi"/>
                         </constraints>
                     </view>
@@ -252,7 +267,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Detail" id="O5S-Gl-5O6">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="1u2-dA-wOt"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="1u2-dA-wOt">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="detailViewSegueToEditor" id="NqN-zB-1q8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="75z-8M-Qc1" id="roB-S0-S8x"/>
@@ -325,5 +344,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZYf-aC-uTA"/>
+        <segue reference="NqN-zB-1q8"/>
     </inferredMetricsTieBreakers>
 </document>
