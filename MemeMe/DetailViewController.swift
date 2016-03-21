@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
 			
 		case "detailViewSegueToEditor":
 			// segue is to editor's navigation controller; need to reach its child view controller
-			let controller = segue.destinationViewController.childViewControllers[0] as! EditorViewController
+			let controller = segue.destinationViewController as! EditorViewController
 			controller.defaultTopText = selectedMeme.topMemeText
 			controller.defaultBottomText = selectedMeme.bottomMemeText
 			controller.selectedImage = selectedMeme.originalImage
