@@ -10,7 +10,13 @@ import UIKit
 
 struct Meme {
 	
-	// MARK: - Properties
+	// MARK: - Properties: Type ("Class" in other languages)
+	
+	static var allMemes = [Meme]()
+	
+	
+	// MARK: - Properties: Instance
+	
 	var topMemeText: String!
 	var bottomMemeText: String!
 	

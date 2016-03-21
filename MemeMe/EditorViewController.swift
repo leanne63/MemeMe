@@ -298,7 +298,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			memedImage: memedImage)
 		
 		// add it to our app's array of memes
-		AppDelegate.memes.append(meme)
+		Meme.allMemes.append(meme)
 	}
 	
 }

@@ -11,11 +11,6 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
-	// MARK: - Type (ie "Class") Properties
-	
-	static var memes = [Meme]()
-	
-	
 	// MARK: - Instance Properties
 	
 	var window: UIWindow?

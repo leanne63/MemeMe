@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -59,7 +60,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="jhL-0a-jAU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kun-u2-rBS">
                             <connections>
-                                <segue destination="GfS-Cm-mkW" kind="show" identifier="tableViewSegueToEditor" id="USQ-3B-7bO"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="tableViewSegueToEditor" id="EUV-Qu-xyZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -127,7 +128,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="bDK-BP-3ui">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nZL-ez-e1i">
                             <connections>
-                                <segue destination="GfS-Cm-mkW" kind="show" identifier="collectionViewSegueToEditor" id="6wQ-W3-uxi"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="collectionViewSegueToEditor" id="Yn3-8T-rGO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -136,7 +137,7 @@
             </objects>
             <point key="canvasLocation" x="1929" y="-463"/>
         </scene>
-        <!--Meme Editor-->
+        <!--Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +150,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZV6-Av-vw3" userLabel="Meme Image View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT PLACEHOLDER" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYr-Dr-9cE" userLabel="Top Text Field">
@@ -168,49 +169,64 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-eT-c35">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
+                                        <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL">
+                                            <connections>
+                                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="VQb-j8-j94"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
+                                            <connections>
+                                                <action selector="cancelEditing:" destination="BYZ-38-t0r" id="sNZ-ju-O99"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1P-Gj-cqA">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JGD-Ch-OhM"/>
+                                    <barButtonItem systemItem="camera" id="KmG-nS-igt">
+                                        <connections>
+                                            <action selector="pickAMemeImage:" destination="BYZ-38-t0r" id="ABx-9s-1Nf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rpB-Ua-Jyq"/>
+                                    <barButtonItem title="Album" id="ZCX-H4-T7W">
+                                        <connections>
+                                            <action selector="pickAMemeImage:" destination="BYZ-38-t0r" id="3V2-NE-eSg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ssv-u7-Vrg"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="1QO-25-eoa"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="centerY" secondItem="ZV6-Av-vw3" secondAttribute="centerY" multiplier="35%" id="94b-iE-YLP"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="A9B-Y8-ahs"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="width" secondItem="ZV6-Av-vw3" secondAttribute="width" id="GhD-yx-nzs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w1P-Gj-cqA" secondAttribute="bottom" id="HCK-Xx-n7T"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="width" secondItem="ZV6-Av-vw3" secondAttribute="width" id="IHQ-jI-5Xm"/>
                             <constraint firstItem="QYr-Dr-9cE" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="Pqr-h9-h22"/>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Url-67-wpz"/>
+                            <constraint firstItem="w1P-Gj-cqA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="W7X-Su-BZt"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aW0-5B-hcg"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lO6-OK-F0C"/>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="n4N-eq-16g"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerY" secondItem="ZV6-Av-vw3" secondAttribute="centerY" multiplier="1.5" id="pbK-GB-LGg"/>
                             <constraint firstItem="ZV6-Av-vw3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tEq-Pv-vQY"/>
+                            <constraint firstItem="w1P-Gj-cqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="vD8-fq-XpK"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="wNw-SO-6qi"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="JGD-Ch-OhM"/>
-                        <barButtonItem systemItem="camera" id="KmG-nS-igt">
-                            <connections>
-                                <action selector="pickAMemeImage:" destination="BYZ-38-t0r" id="ABx-9s-1Nf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="rpB-Ua-Jyq"/>
-                        <barButtonItem title="Album" id="ZCX-H4-T7W">
-                            <connections>
-                                <action selector="pickAMemeImage:" destination="BYZ-38-t0r" id="3V2-NE-eSg"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ssv-u7-Vrg"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
-                        <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="M9l-7d-joL">
-                            <connections>
-                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="VQb-j8-j94"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Kdz-lK-wNq">
-                            <connections>
-                                <action selector="cancelEditing:" destination="BYZ-38-t0r" id="sNZ-ju-O99"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="activityButton" destination="M9l-7d-joL" id="rdQ-Ag-JUN"/>
                         <outlet property="albumButton" destination="ZCX-H4-T7W" id="Dhp-Nk-0K8"/>
@@ -224,29 +240,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="4SG-2S-z7y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3937" y="-1318"/>
-        </scene>
-        <!--Editor Navigation Controller-->
-        <scene sceneID="4Mo-g9-Yl2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="GfS-Cm-mkW" userLabel="Editor Navigation Controller" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zGl-Xa-oJI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ESI-pb-ZUT">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zsI-Ns-yJ3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ocd-vL-NpM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3125" y="-1318"/>
+            <point key="canvasLocation" x="2835" y="-1298"/>
         </scene>
         <!--Meme Detail View Controller-->
         <scene sceneID="0bM-PZ-B23">
@@ -275,7 +269,7 @@
                     <navigationItem key="navigationItem" title="Meme Detail" id="O5S-Gl-5O6">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="1u2-dA-wOt">
                             <connections>
-                                <segue destination="GfS-Cm-mkW" kind="presentation" identifier="detailViewSegueToEditor" id="PqV-BB-ItG"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="detailViewSegueToEditor" id="NqN-zB-1q8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -285,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IqO-d3-bbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3125" y="-568"/>
+            <point key="canvasLocation" x="2835" y="-130"/>
         </scene>
         <!--Collection Navigation Controller-->
         <scene sceneID="mfH-lz-P6t">
@@ -349,7 +343,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QLl-f3-8lw"/>
-        <segue reference="PqV-BB-ItG"/>
+        <segue reference="ZYf-aC-uTA"/>
+        <segue reference="NqN-zB-1q8"/>
     </inferredMetricsTieBreakers>
 </document>
