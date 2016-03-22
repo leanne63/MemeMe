@@ -17,7 +17,6 @@
 		D5C971341C9CDC9800E9CAFF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C971301C9CDC9800E9CAFF /* TableViewController.swift */; };
 		D5C971361C9CDCB100E9CAFF /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C971351C9CDCB100E9CAFF /* Meme.swift */; };
 		D5C971381C9CDCF100E9CAFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C971371C9CDCF100E9CAFF /* Assets.xcassets */; };
-		D5C9713A1C9CDD1000E9CAFF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5C971391C9CDD1000E9CAFF /* Info.plist */; };
 		D5C9713B1C9CE04300E9CAFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C9712B1C9CDC5900E9CAFF /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -251,7 +250,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C9713A1C9CDD1000E9CAFF /* Info.plist in Resources */,
 				D518D8F51C7A21B200CF7E56 /* LaunchScreen.storyboard in Resources */,
 				D5C971381C9CDCF100E9CAFF /* Assets.xcassets in Resources */,
 				D518D8F01C7A21B200CF7E56 /* Main.storyboard in Resources */,
