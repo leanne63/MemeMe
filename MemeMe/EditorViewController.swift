@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UINavigationBarDelegate, UIBarPositioningDelegate {
 
 	// MARK: - Properties (Outlets)
 	
@@ -40,6 +40,8 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		navBar.delegate = self
 		
 		topTextField.delegate = self
 		bottomTextField.delegate = self
@@ -176,6 +178,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		textField.text = capitalizedText
 		
 		return false
+	}
+	
+	
+	// MARK: - Bar Positioning Delegate Methods
+	
+	func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+		return .TopAttached
 	}
 	
 	

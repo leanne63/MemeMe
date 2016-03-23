@@ -190,10 +190,7 @@
                                 </items>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTL-eT-c35">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="AmQ-ff-GLS"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Meme Editor" id="dBp-g5-YMN" userLabel="Meme Editor Nav Item">
                                         <barButtonItem key="backBarButtonItem" systemItem="action" id="gFD-ju-zak"/>
@@ -226,7 +223,7 @@
                             <constraint firstItem="w1P-Gj-cqA" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="iZt-RZ-aQ4"/>
                             <constraint firstItem="w1P-Gj-cqA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="mFt-aM-7dN"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerY" secondItem="ZV6-Av-vw3" secondAttribute="centerY" multiplier="1.5" id="pbK-GB-LGg"/>
-                            <constraint firstItem="TTL-eT-c35" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s4y-hg-bc7"/>
+                            <constraint firstItem="TTL-eT-c35" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uFU-Rc-GA7"/>
                             <constraint firstItem="KJv-m8-NTS" firstAttribute="centerX" secondItem="ZV6-Av-vw3" secondAttribute="centerX" id="wNw-SO-6qi"/>
                             <constraint firstItem="w1P-Gj-cqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xo5-hW-mSQ"/>
                         </constraints>
