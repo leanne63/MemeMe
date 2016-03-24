@@ -65,7 +65,7 @@ class CollectionViewController: UICollectionViewController {
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
 			
-		case "unwindFromEditor:":
+		case #selector(CollectionViewController.unwindFromEditor(_:)):
 			let isUnwindResponder = startedDetailSegue || startedEditorSegue
 			
 			return isUnwindResponder

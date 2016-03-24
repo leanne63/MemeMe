@@ -73,7 +73,7 @@ class TableViewController: UITableViewController {
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
 			
-		case "unwindFromEditor:":
+		case #selector(TableViewController.unwindFromEditor(_:)):
 			let isUnwindResponder = startedDetailSegue || startedEditorSegue
 			
 			return isUnwindResponder
