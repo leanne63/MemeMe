@@ -194,13 +194,13 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		// watch for the keyboard to show
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "keyboardWillShow:",
+			selector: #selector(EditorViewController.keyboardWillShow(_:)),
 			name: UIKeyboardWillShowNotification,
 			object: nil)
 		
 		// watch for the keyboard to hide
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "keyboardWillHide:",
+			selector: #selector(EditorViewController.keyboardWillHide(_:)),
 			name: UIKeyboardWillHideNotification,
 			object: nil)
 	}
