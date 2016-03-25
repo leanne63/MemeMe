@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -23,10 +25,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-Fg-iK7">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                                            <rect key="frame" x="0.0" y="2" width="160" height="90"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="160" id="5Qm-Ai-GCw"/>
+                                                <constraint firstAttribute="width" secondItem="4JB-Fg-iK7" secondAttribute="height" multiplier="16:9" id="KBR-S9-c5C"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP AND BOTTOM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Nn-dv8" userLabel="Label">
@@ -38,12 +40,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="J1D-IV-AKi"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="R7D-Aq-erj"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="JO0-aa-Kbb"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="JdB-fe-uzG"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="top" secondItem="SDb-Wc-9wN" secondAttribute="topMargin" multiplier="25%" id="PVT-38-n2k"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="leading" secondItem="4JB-Fg-iK7" secondAttribute="trailing" id="W66-tU-ob7"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="trailing" secondItem="SDb-Wc-9wN" secondAttribute="trailing" id="hWD-V4-W3b"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="lS0-GK-ayW"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="ntL-bb-CzV"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="z2I-Hd-B7E"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -104,15 +106,19 @@
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1h5-gM-zrz">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="1h5-gM-zrz" secondAttribute="height" multiplier="16:9" id="7Xc-wA-26Q"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="centerX" secondItem="nbi-lx-Hbj" secondAttribute="centerX" id="1hf-fX-aE2"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="height" secondItem="nbi-lx-Hbj" secondAttribute="height" id="3Fg-3h-kfY"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="width" id="H8Y-uA-8r8"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="centerY" secondItem="nbi-lx-Hbj" secondAttribute="centerY" id="Ped-cU-0fV"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="leading" secondItem="nbi-lx-Hbj" secondAttribute="leading" id="7x0-46-mTD"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="width" id="WyG-p8-Qjt"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="top" secondItem="nbi-lx-Hbj" secondAttribute="top" id="e7Q-tr-doY"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="height" multiplier="16:9" id="tke-kz-qaq"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vfa-4S-Olm" kind="show" identifier="collectionViewSegueToDetail" id="ZYf-aC-uTA"/>
@@ -352,7 +358,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QLl-f3-8lw"/>
         <segue reference="EUV-Qu-xyZ"/>
+        <segue reference="QLl-f3-8lw"/>
     </inferredMetricsTieBreakers>
 </document>
