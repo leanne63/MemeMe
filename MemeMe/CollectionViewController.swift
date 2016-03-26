@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-	// MARK: - Properties
+	// MARK: - Properties: Non-Outlets
 	
 	let collectionCellReuseIdentifier = "reusableCollectionCell"
 	
@@ -75,6 +75,12 @@ class CollectionViewController: UICollectionViewController {
 		}
 	}
 	
+	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+		
+		// redraw on rotation so resizes cells properly
+		collectionView!.reloadData()
+	}
+	
 	
 	// MARK: - Actions
 	
@@ -87,7 +93,7 @@ class CollectionViewController: UICollectionViewController {
 	}
 	
 	
-	// MARK: Collection View Data Source
+	// MARK: - Collection View Data Source
 
 	// using default number of sections (1), so no override for numberOfSections
 	
@@ -99,7 +105,8 @@ class CollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellReuseIdentifier, forIndexPath: indexPath)
+		
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellReuseIdentifier, forIndexPath: indexPath)
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		
@@ -108,6 +115,36 @@ class CollectionViewController: UICollectionViewController {
         return cell
     }
 
+	
+	// MARK: - Collection View Delegate Flow Layout Methods
+	
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		
+		// retrieve width available to us
+		let numItemsPerRow: CGFloat = 3.0
+		let numSpacesPerRow: CGFloat = numItemsPerRow - 1.0
+		
+		let grossAvailWidth: CGFloat = collectionView.bounds.size.width
+		
+		let thisLayout = collectionViewLayout as! UICollectionViewFlowLayout
+		let interimSpacing: CGFloat = thisLayout.minimumInteritemSpacing
+		
+		let totalInterimSpace: CGFloat = interimSpacing * numSpacesPerRow
+
+		let netAvailWidth: CGFloat = grossAvailWidth - totalInterimSpace
+		
+		let itemWidth: CGFloat = netAvailWidth / numItemsPerRow
+		
+		// retrieve aspect ratio constraint - hardcoded for now
+		let aspectRatio: CGFloat = 9.0 / 16.0
+		
+		// based on width and aspect ratio, set height
+		let itemHeight: CGFloat = itemWidth * aspectRatio
+		let itemSize = CGSizeMake(itemWidth, itemHeight)
+		
+		return itemSize
+	}
+	
 	
 	// MARK: - Utility Functions
 	
@@ -145,6 +182,4 @@ class CollectionViewController: UICollectionViewController {
 		}
 	}
 	
-
-
 }

@@ -89,7 +89,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p1D-Dq-NcE">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="4" id="p1D-Dq-NcE">
                             <size key="itemSize" width="160" height="90"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -116,9 +116,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="1h5-gM-zrz" firstAttribute="leading" secondItem="nbi-lx-Hbj" secondAttribute="leading" id="7x0-46-mTD"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="width" id="WyG-p8-Qjt"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="height" secondItem="nbi-lx-Hbj" secondAttribute="height" id="WyG-p8-Qjt"/>
                                     <constraint firstItem="1h5-gM-zrz" firstAttribute="top" secondItem="nbi-lx-Hbj" secondAttribute="top" id="e7Q-tr-doY"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="height" multiplier="16:9" id="tke-kz-qaq"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vfa-4S-Olm" kind="show" identifier="collectionViewSegueToDetail" id="ZYf-aC-uTA"/>
@@ -358,7 +357,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EUV-Qu-xyZ"/>
-        <segue reference="QLl-f3-8lw"/>
+        <segue reference="Yn3-8T-rGO"/>
+        <segue reference="ZYf-aC-uTA"/>
     </inferredMetricsTieBreakers>
 </document>
