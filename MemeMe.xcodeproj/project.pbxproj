@@ -18,6 +18,7 @@
 		D5C971361C9CDCB100E9CAFF /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C971351C9CDCB100E9CAFF /* Meme.swift */; };
 		D5C971381C9CDCF100E9CAFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C971371C9CDCF100E9CAFF /* Assets.xcassets */; };
 		D5C9713B1C9CE04300E9CAFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C9712B1C9CDC5900E9CAFF /* AppDelegate.swift */; };
+		D5EADB7D1CA83EF100ED9A38 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EADB7C1CA83EF100ED9A38 /* CollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D5C971351C9CDCB100E9CAFF /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		D5C971371C9CDCF100E9CAFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5C971391C9CDD1000E9CAFF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EADB7C1CA83EF100ED9A38 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				D5C9712B1C9CDC5900E9CAFF /* AppDelegate.swift */,
 				D50017CA1C891DD80087FE2E /* View Controllers */,
+				D5EADB7C1CA83EF100ED9A38 /* CollectionViewFlowLayout.swift */,
 				D5C971351C9CDCB100E9CAFF /* Meme.swift */,
 				D518D8EE1C7A21B200CF7E56 /* Main.storyboard */,
 				D518D8F31C7A21B200CF7E56 /* LaunchScreen.storyboard */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EADB7D1CA83EF100ED9A38 /* CollectionViewFlowLayout.swift in Sources */,
 				D5C9713B1C9CE04300E9CAFF /* AppDelegate.swift in Sources */,
 				D5C971311C9CDC9800E9CAFF /* CollectionViewController.swift in Sources */,
 				D5C971341C9CDC9800E9CAFF /* TableViewController.swift in Sources */,

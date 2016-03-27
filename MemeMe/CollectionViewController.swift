@@ -12,15 +12,22 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
 	// MARK: - Properties: Non-Outlets
 	
-	let collectionCellReuseIdentifier = "reusableCollectionCell"
+	let reusableCollectionCellIdentifier = "reusableCollectionCell"
 	
-	// indicates whether this controller initiated a segue
+	// indicates whether this controller initiated a segue - 
 	//  used to determine whether this controller can respond to an unwind request
 	var startedEditorSegue = false
 	var startedDetailSegue = false
 	
 	
 	// MARK: - Collection View Controller Overrides
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// Register cell classes - not needed because "registered" within storyboard
+		// self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reusableCollectionCellIdentifier)
+	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
@@ -106,7 +113,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellReuseIdentifier, forIndexPath: indexPath)
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reusableCollectionCellIdentifier, forIndexPath: indexPath)
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		
@@ -115,36 +122,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return cell
     }
 
-	
-	// MARK: - Collection View Delegate Flow Layout Methods
-	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		
-		// retrieve width available to us
-		let numItemsPerRow: CGFloat = 3.0
-		let numSpacesPerRow: CGFloat = numItemsPerRow - 1.0
-		
-		let grossAvailWidth: CGFloat = collectionView.bounds.size.width
-		
-		let thisLayout = collectionViewLayout as! UICollectionViewFlowLayout
-		let interimSpacing: CGFloat = thisLayout.minimumInteritemSpacing
-		
-		let totalInterimSpace: CGFloat = interimSpacing * numSpacesPerRow
-
-		let netAvailWidth: CGFloat = grossAvailWidth - totalInterimSpace
-		
-		let itemWidth: CGFloat = netAvailWidth / numItemsPerRow
-		
-		// retrieve aspect ratio constraint - hardcoded for now
-		let aspectRatio: CGFloat = 9.0 / 16.0
-		
-		// based on width and aspect ratio, set height
-		let itemHeight: CGFloat = itemWidth * aspectRatio
-		let itemSize = CGSizeMake(itemWidth, itemHeight)
-		
-		return itemSize
-	}
-	
 	
 	// MARK: - Utility Functions
 	
