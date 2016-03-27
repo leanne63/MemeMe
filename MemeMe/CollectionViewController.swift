@@ -32,7 +32,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let numMemes = Meme.allMemes.count
+		let numMemes = MemeData.allMemes.count
 		let isEmpty = (numMemes == 0)
 		
 		setUpCollectionViewBackground(isEmpty)
@@ -55,7 +55,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 			let selectedMeme = sendingCellIndexPath.row
 			
 			let controller = segue.destinationViewController as! DetailViewController
-			controller.selectedMeme = Meme.allMemes[selectedMeme]
+			controller.selectedMeme = MemeData.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
 			
@@ -106,7 +106,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 	
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		let numItems = Meme.allMemes.count
+		let numItems = MemeData.allMemes.count
 		
 		return numItems
     }
@@ -117,7 +117,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		
-		cellImageView.image = Meme.allMemes[indexPath.row].memedImage
+		cellImageView.image = MemeData.allMemes[indexPath.row].memedImage
 		
         return cell
     }
