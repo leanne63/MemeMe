@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UINavigationBarDelegate, UIBarPositioningDelegate {
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 	// MARK: - Properties (Outlets)
 	
@@ -40,8 +40,6 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		navBar.delegate = self
 		
 		topTextField.delegate = self
 		bottomTextField.delegate = self
@@ -181,26 +179,19 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	}
 	
 	
-	// MARK: - Bar Positioning Delegate Methods
-	
-	func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-		return .TopAttached
-	}
-	
-	
 	// MARK: - Subscribe/Unsubscribe to Notifications
 	
 	func subscribeToKeyboardNotifications() {
 		
 		// watch for the keyboard to show
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "keyboardWillShow:",
+			selector: #selector(EditorViewController.keyboardWillShow(_:)),
 			name: UIKeyboardWillShowNotification,
 			object: nil)
 		
 		// watch for the keyboard to hide
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: "keyboardWillHide:",
+			selector: #selector(EditorViewController.keyboardWillHide(_:)),
 			name: UIKeyboardWillHideNotification,
 			object: nil)
 	}
@@ -305,7 +296,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 			memedImage: memedImage)
 		
 		// add it to our app's array of memes
-		Meme.allMemes.append(meme)
+		MemeData.allMemes.append(meme)
 	}
 	
 }

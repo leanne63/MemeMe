@@ -31,7 +31,7 @@ class TableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let numMemes = Meme.allMemes.count
+		let numMemes = MemeData.allMemes.count
 		let isEmpty = (numMemes == 0)
 		
 		navigationItem.leftBarButtonItem?.enabled = !isEmpty
@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
 			let selectedMeme = sendingCellIndexPath.row
 			
 			let controller = segue.destinationViewController as! DetailViewController
-			controller.selectedMeme = Meme.allMemes[selectedMeme]
+			controller.selectedMeme = MemeData.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
 			
@@ -73,7 +73,7 @@ class TableViewController: UITableViewController {
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
 			
-		case "unwindFromEditor:":
+		case #selector(TableViewController.unwindFromEditor(_:)):
 			let isUnwindResponder = startedDetailSegue || startedEditorSegue
 			
 			return isUnwindResponder
@@ -101,7 +101,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		let numRows = Meme.allMemes.count
+		let numRows = MemeData.allMemes.count
 		
 		return numRows
     }
@@ -110,7 +110,7 @@ class TableViewController: UITableViewController {
 		
         let cell = tableView.dequeueReusableCellWithIdentifier(tableCellReuseIdentifier, forIndexPath: indexPath)
 		
-		let currentMeme = Meme.allMemes[indexPath.row]
+		let currentMeme = MemeData.allMemes[indexPath.row]
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		cellImageView.image = currentMeme.memedImage
@@ -138,12 +138,12 @@ class TableViewController: UITableViewController {
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == .Delete {
-			Meme.allMemes.removeAtIndex(indexPath.row)
+			MemeData.allMemes.removeAtIndex(indexPath.row)
 			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 			
 			// Done button doesn't change back automatically (as of Xcode 7, iOS 9),
 			//	so let's save the user some effort and change it back for them
-			if Meme.allMemes.count == 0 {
+			if MemeData.allMemes.count == 0 {
 				let editButton = navigationItem.leftBarButtonItem!
 				editButton.title = "Edit"
 				editButton.enabled = false

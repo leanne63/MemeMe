@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pmL-hk-R9m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pmL-hk-R9m">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -23,10 +25,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4JB-Fg-iK7">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                                            <rect key="frame" x="0.0" y="2" width="160" height="90"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="160" id="5Qm-Ai-GCw"/>
+                                                <constraint firstAttribute="width" secondItem="4JB-Fg-iK7" secondAttribute="height" multiplier="16:9" id="KBR-S9-c5C"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP AND BOTTOM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLi-Nn-dv8" userLabel="Label">
@@ -38,12 +40,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="J1D-IV-AKi"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="centerY" secondItem="SDb-Wc-9wN" secondAttribute="centerY" id="R7D-Aq-erj"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="JO0-aa-Kbb"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="JdB-fe-uzG"/>
+                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="top" secondItem="SDb-Wc-9wN" secondAttribute="topMargin" multiplier="25%" id="PVT-38-n2k"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="leading" secondItem="4JB-Fg-iK7" secondAttribute="trailing" id="W66-tU-ob7"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="trailing" secondItem="SDb-Wc-9wN" secondAttribute="trailing" id="hWD-V4-W3b"/>
                                         <constraint firstItem="NLi-Nn-dv8" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="lS0-GK-ayW"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="leading" secondItem="SDb-Wc-9wN" secondAttribute="leading" id="ntL-bb-CzV"/>
-                                        <constraint firstItem="4JB-Fg-iK7" firstAttribute="height" secondItem="SDb-Wc-9wN" secondAttribute="height" id="z2I-Hd-B7E"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -65,14 +67,7 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="T6a-c7-ag4">
                         <autoresizingMask key="autoresizingMask"/>
-                        <attributedString key="attributedTitle">
-                            <fragment content="hello?">
-                                <attributes>
-                                    <font key="NSFont" metaFont="smallSystem"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <attributedString key="attributedTitle"/>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qj-rS-Rwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -87,7 +82,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p1D-Dq-NcE">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="4" id="p1D-Dq-NcE" customClass="CollectionViewFlowLayout" customModule="MemeMe" customModuleProvider="target">
                             <size key="itemSize" width="160" height="90"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -104,15 +99,18 @@
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1h5-gM-zrz">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="1h5-gM-zrz" secondAttribute="height" multiplier="16:9" id="7Xc-wA-26Q"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="centerX" secondItem="nbi-lx-Hbj" secondAttribute="centerX" id="1hf-fX-aE2"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="height" secondItem="nbi-lx-Hbj" secondAttribute="height" id="3Fg-3h-kfY"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="width" secondItem="nbi-lx-Hbj" secondAttribute="width" id="H8Y-uA-8r8"/>
-                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="centerY" secondItem="nbi-lx-Hbj" secondAttribute="centerY" id="Ped-cU-0fV"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="leading" secondItem="nbi-lx-Hbj" secondAttribute="leading" id="7x0-46-mTD"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="height" secondItem="nbi-lx-Hbj" secondAttribute="height" id="WyG-p8-Qjt"/>
+                                    <constraint firstItem="1h5-gM-zrz" firstAttribute="top" secondItem="nbi-lx-Hbj" secondAttribute="top" id="e7Q-tr-doY"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="vfa-4S-Olm" kind="show" identifier="collectionViewSegueToDetail" id="ZYf-aC-uTA"/>
@@ -206,6 +204,11 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="barPosition">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

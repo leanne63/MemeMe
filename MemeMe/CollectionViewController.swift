@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-	// MARK: - Properties
+	// MARK: - Properties: Non-Outlets
 	
-	let collectionCellReuseIdentifier = "reusableCollectionCell"
+	let reusableCollectionCellIdentifier = "reusableCollectionCell"
 	
-	// indicates whether this controller initiated a segue
+	// indicates whether this controller initiated a segue - 
 	//  used to determine whether this controller can respond to an unwind request
 	var startedEditorSegue = false
 	var startedDetailSegue = false
@@ -22,10 +22,17 @@ class CollectionViewController: UICollectionViewController {
 	
 	// MARK: - Collection View Controller Overrides
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// Register cell classes - not needed because "registered" within storyboard
+		// self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reusableCollectionCellIdentifier)
+	}
+	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let numMemes = Meme.allMemes.count
+		let numMemes = MemeData.allMemes.count
 		let isEmpty = (numMemes == 0)
 		
 		setUpCollectionViewBackground(isEmpty)
@@ -48,7 +55,7 @@ class CollectionViewController: UICollectionViewController {
 			let selectedMeme = sendingCellIndexPath.row
 			
 			let controller = segue.destinationViewController as! DetailViewController
-			controller.selectedMeme = Meme.allMemes[selectedMeme]
+			controller.selectedMeme = MemeData.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
 			
@@ -65,7 +72,7 @@ class CollectionViewController: UICollectionViewController {
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
 			
-		case "unwindFromEditor:":
+		case #selector(CollectionViewController.unwindFromEditor(_:)):
 			let isUnwindResponder = startedDetailSegue || startedEditorSegue
 			
 			return isUnwindResponder
@@ -73,6 +80,12 @@ class CollectionViewController: UICollectionViewController {
 		default:
 			return false
 		}
+	}
+	
+	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+		
+		// redraw on rotation so resizes cells properly
+		collectionView!.reloadData()
 	}
 	
 	
@@ -87,23 +100,24 @@ class CollectionViewController: UICollectionViewController {
 	}
 	
 	
-	// MARK: Collection View Data Source
+	// MARK: - Collection View Data Source
 
 	// using default number of sections (1), so no override for numberOfSections
 	
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
-		let numItems = Meme.allMemes.count
+		let numItems = MemeData.allMemes.count
 		
 		return numItems
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellReuseIdentifier, forIndexPath: indexPath)
+		
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reusableCollectionCellIdentifier, forIndexPath: indexPath)
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		
-		cellImageView.image = Meme.allMemes[indexPath.row].memedImage
+		cellImageView.image = MemeData.allMemes[indexPath.row].memedImage
 		
         return cell
     }
@@ -145,6 +159,4 @@ class CollectionViewController: UICollectionViewController {
 		}
 	}
 	
-
-
 }
