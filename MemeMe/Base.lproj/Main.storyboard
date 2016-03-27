@@ -67,14 +67,7 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="T6a-c7-ag4">
                         <autoresizingMask key="autoresizingMask"/>
-                        <attributedString key="attributedTitle">
-                            <fragment content="hello?">
-                                <attributes>
-                                    <font key="NSFont" metaFont="smallSystem"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <attributedString key="attributedTitle"/>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qj-rS-Rwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -357,7 +350,7 @@
         <image name="Table_Icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Yn3-8T-rGO"/>
-        <segue reference="ZYf-aC-uTA"/>
+        <segue reference="QLl-f3-8lw"/>
+        <segue reference="EUV-Qu-xyZ"/>
     </inferredMetricsTieBreakers>
 </document>
