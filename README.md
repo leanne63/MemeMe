@@ -1,4 +1,4 @@
-## App-Name
+## MemeMe
 
 ### *Tech Used*
 * Xcode 7.3.1
