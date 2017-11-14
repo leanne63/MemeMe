@@ -25,16 +25,16 @@ class TableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		navigationItem.leftBarButtonItem = editButtonItem()
+		navigationItem.leftBarButtonItem = editButtonItem
 	}
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		let numMemes = MemeData.allMemes.count
 		let isEmpty = (numMemes == 0)
 		
-		navigationItem.leftBarButtonItem?.enabled = !isEmpty
+		navigationItem.leftBarButtonItem?.isEnabled = !isEmpty
 		
 		setUpTableViewBackground(isEmpty)
 
@@ -42,7 +42,7 @@ class TableViewController: UITableViewController {
 		tableView.reloadData()
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		guard let segueId = segue.identifier else {
 			return
@@ -52,10 +52,10 @@ class TableViewController: UITableViewController {
 			
 		case "tableViewSegueToDetail":
 			let sendingCell = sender as! UITableViewCell
-			let sendingCellIndexPath = tableView.indexPathForCell(sendingCell)!
+			let sendingCellIndexPath = tableView.indexPath(for: sendingCell)!
 			let selectedMeme = sendingCellIndexPath.row
 			
-			let controller = segue.destinationViewController as! DetailViewController
+			let controller = segue.destination as! DetailViewController
 			controller.selectedMeme = MemeData.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
@@ -68,7 +68,7 @@ class TableViewController: UITableViewController {
 		}
 	}
 	
-	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+	override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
 		
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
@@ -86,7 +86,7 @@ class TableViewController: UITableViewController {
 	
 	// MARK: - Actions
 	
-	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
+	@IBAction func unwindFromEditor(_ segue: UIStoryboardSegue) {
 		
 		// the editor's unwind came here; all we need do is revert the indicator
 		//	to false, so it's valid for the next unwind action
@@ -99,16 +99,16 @@ class TableViewController: UITableViewController {
 
 	// using default number of sections (1), so no override for numberOfSections
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
 		let numRows = MemeData.allMemes.count
 		
 		return numRows
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-        let cell = tableView.dequeueReusableCellWithIdentifier(tableCellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellReuseIdentifier, for: indexPath)
 		
 		let currentMeme = MemeData.allMemes[indexPath.row]
 		
@@ -117,7 +117,7 @@ class TableViewController: UITableViewController {
 		
 		let topText = currentMeme.topMemeText
 		let bottomText = currentMeme.bottomMemeText
-		let labelText: String = generateLabelText(topText, bottomText: bottomText)
+		let labelText: String = generateLabelText(topText!, bottomText: bottomText!)
 		
 		let cellLabel = cell.viewWithTag(2) as! UILabel
 		cellLabel.text = labelText
@@ -129,24 +129,24 @@ class TableViewController: UITableViewController {
 	// MARK: - Table View Delegate
 	
 	// required to allow row deletion
-	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		
 		return true
 	}
 	
 	// do the deletion
-	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		
-		if editingStyle == .Delete {
-			MemeData.allMemes.removeAtIndex(indexPath.row)
-			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		if editingStyle == .delete {
+			MemeData.allMemes.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
 			
 			// Done button doesn't change back automatically (as of Xcode 7, iOS 9),
 			//	so let's save the user some effort and change it back for them
 			if MemeData.allMemes.count == 0 {
 				let editButton = navigationItem.leftBarButtonItem!
 				editButton.title = "Edit"
-				editButton.enabled = false
+				editButton.isEnabled = false
 				
 				let isEmpty = true
 				setUpTableViewBackground(isEmpty)
@@ -157,7 +157,7 @@ class TableViewController: UITableViewController {
 	
 	// MARK: - Utility Functions
 	
-	func setUpTableViewBackground(isEmpty: Bool) {
+	func setUpTableViewBackground(_ isEmpty: Bool) {
 		
 		// code modified from:
 		// iOS Programming 101: Implementing Pull-to-Refresh and Handling Empty Table
@@ -171,25 +171,25 @@ class TableViewController: UITableViewController {
 		if !isEmpty {
 			if tableView.backgroundView != nil {
 				tableView.backgroundView = nil
-				tableView.separatorStyle = .SingleLine
+				tableView.separatorStyle = .singleLine
 			}
 		}
 		else {
 			if tableView.backgroundView == nil {
-				let emptyMessageLabel = UILabel(frame: CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
+				let emptyMessageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
 				emptyMessageLabel.text = emptyMessageText
 				emptyMessageLabel.numberOfLines = 0
 				emptyMessageLabel.font = UIFont(name: fontName, size: fontSize)
-				emptyMessageLabel.textAlignment = .Center
+				emptyMessageLabel.textAlignment = .center
 				emptyMessageLabel.sizeToFit()
 				
 				tableView.backgroundView = emptyMessageLabel
-				tableView.separatorStyle = .None
+				tableView.separatorStyle = .none
 			}
 		}
 	}
 	
-	func generateLabelText(topText: String, bottomText: String) -> String {
+	func generateLabelText(_ topText: String, bottomText: String) -> String {
 		
 		let ellipsis = "..."
 		
@@ -208,8 +208,8 @@ class TableViewController: UITableViewController {
 		}
 		else {
 			// truncate top text to halfway point
-			let index = topText.startIndex.advancedBy(halfNumCharsAvail)
-			labelText += topText.substringToIndex(index)
+			let index = topText.characters.index(topText.startIndex, offsetBy: halfNumCharsAvail)
+			labelText += topText.substring(to: index)
 		}
 		
 		remainingCharsAvail -= labelText.characters.count
@@ -224,23 +224,23 @@ class TableViewController: UITableViewController {
 			// truncate bottom text to fit
 			if remainingCharsAvail <= halfNumCharsAvail {
 				// no room left over from the front, so simply truncate
-				let index = bottomText.endIndex.advancedBy(-(remainingCharsAvail))
-				labelText += bottomText.substringFromIndex(index)
+				let index = bottomText.characters.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
+				labelText += bottomText.substring(from: index)
 			}
 			else {
 				// room was left at the front, so split the truncation between front and back
 				// get remainder at front; fill it with beginning of bottom text
 				let numCharsLeftAtFront = remainingCharsAvail - halfNumCharsAvail
-				let frontIndex = bottomText.startIndex.advancedBy(numCharsLeftAtFront)
-				labelText += bottomText.substringToIndex(frontIndex)
+				let frontIndex = bottomText.characters.index(bottomText.startIndex, offsetBy: numCharsLeftAtFront)
+				labelText += bottomText.substring(to: frontIndex)
 				
 				// add ellipsis
 				labelText += ellipsis
 				remainingCharsAvail = halfNumCharsAvail - ellipsis.characters.count
 				
 				// get remainder at end; fill with ending of bottom text
-				let backIndex = bottomText.endIndex.advancedBy(-(remainingCharsAvail))
-				labelText += bottomText.substringFromIndex(backIndex)
+				let backIndex = bottomText.characters.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
+				labelText += bottomText.substring(from: backIndex)
 			}
 		}
 		

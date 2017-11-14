@@ -19,8 +19,8 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
 	}
 	
 	
-	override func prepareLayout() {
-		super.prepareLayout()
+	override func prepare() {
+		super.prepare()
 		
 		if let collectionView = self.collectionView {
 			var newItemSize = itemSize

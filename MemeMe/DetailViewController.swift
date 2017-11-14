@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
 		imageView.image = selectedMeme.memedImage
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		guard let segueId = segue.identifier else {
 			return
@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
 			
 		case "detailViewSegueToEditor":
 			// segue is to editor's navigation controller; need to reach its child view controller
-			let controller = segue.destinationViewController as! EditorViewController
+			let controller = segue.destination as! EditorViewController
 			controller.defaultTopText = selectedMeme.topMemeText
 			controller.defaultBottomText = selectedMeme.bottomMemeText
 			controller.selectedImage = selectedMeme.originalImage

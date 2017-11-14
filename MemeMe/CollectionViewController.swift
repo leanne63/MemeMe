@@ -29,7 +29,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		// self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reusableCollectionCellIdentifier)
 	}
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		let numMemes = MemeData.allMemes.count
@@ -41,7 +41,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		collectionView!.reloadData()
 	}
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
 		guard let segueId = segue.identifier else {
 			return
@@ -51,10 +51,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 			
 		case "collectionViewSegueToDetail":
 			let sendingCell = sender as! UICollectionViewCell
-			let sendingCellIndexPath = collectionView!.indexPathForCell(sendingCell)!
+			let sendingCellIndexPath = collectionView!.indexPath(for: sendingCell)!
 			let selectedMeme = sendingCellIndexPath.row
 			
-			let controller = segue.destinationViewController as! DetailViewController
+			let controller = segue.destination as! DetailViewController
 			controller.selectedMeme = MemeData.allMemes[selectedMeme]
 			
 			startedDetailSegue = true
@@ -67,7 +67,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		}
     }
 	
-	override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+	override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
 		
 		// if we started the segue, then we can handle it; otherwise, pass
 		switch action {
@@ -82,7 +82,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		}
 	}
 	
-	override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+	override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
 		
 		// redraw on rotation so resizes cells properly
 		collectionView!.reloadData()
@@ -91,7 +91,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 	
 	// MARK: - Actions
 	
-	@IBAction func unwindFromEditor(segue: UIStoryboardSegue) {
+	@IBAction func unwindFromEditor(_ segue: UIStoryboardSegue) {
 		
 		// the editor's unwind came here; all we need do is revert the indicator
 		//	to false, so it's valid for the next unwind action
@@ -104,16 +104,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
 	// using default number of sections (1), so no override for numberOfSections
 	
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
 		let numItems = MemeData.allMemes.count
 		
 		return numItems
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reusableCollectionCellIdentifier, forIndexPath: indexPath)
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableCollectionCellIdentifier, for: indexPath)
 		
 		let cellImageView = cell.viewWithTag(1) as! UIImageView
 		
@@ -125,7 +125,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 	
 	// MARK: - Utility Functions
 	
-	func setUpCollectionViewBackground(isEmpty: Bool) {
+	func setUpCollectionViewBackground(_ isEmpty: Bool) {
 		
 		guard let theCollectionView = collectionView else {
 			return
@@ -147,11 +147,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 		}
 		else {
 			if theCollectionView.backgroundView == nil {
-				let emptyMessageLabel = UILabel(frame: CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
+				let emptyMessageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
 				emptyMessageLabel.text = emptyMessageText
 				emptyMessageLabel.numberOfLines = 0
 				emptyMessageLabel.font = UIFont(name: fontName, size: fontSize)
-				emptyMessageLabel.textAlignment = .Center
+				emptyMessageLabel.textAlignment = .center
 				emptyMessageLabel.sizeToFit()
 				
 				theCollectionView.backgroundView = emptyMessageLabel
