@@ -146,9 +146,9 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Image Picker Delegate Methods
 	
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 		
-		memeImageView.image = image
+		memeImageView.image = (info[UIImagePickerControllerOriginalImage] as! UIImage)
 		
 		dismiss(animated: true, completion: nil)
 	}
@@ -212,7 +212,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 	
 	// MARK: - Respond to Notifications
 	
-	func keyboardWillShow(_ notification: Notification) {
+	@objc func keyboardWillShow(_ notification: Notification) {
 		
 		// if we're entering bottom text, move the image up so we can see our edits
 		if bottomTextField.isFirstResponder {
@@ -220,7 +220,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		}
 	}
 	
-	func keyboardWillHide(_ notification: Notification) {
+	@objc func keyboardWillHide(_ notification: Notification) {
 		
 		// if we were entering bottom text, move the image back down to normal
 		if bottomTextField.isFirstResponder {
@@ -236,14 +236,14 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		let paragraphStyleToCenterText = NSMutableParagraphStyle()
 		paragraphStyleToCenterText.alignment = NSTextAlignment.center
 		
-		let memeTextAttributes = [
-			NSStrokeColorAttributeName : UIColor.black,
-			NSForegroundColorAttributeName : UIColor.white,
-			NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-			NSStrokeWidthAttributeName : -3.0,
+		let memeTextAttributes: [String: Any] = [
+			NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
+			NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
+			NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+			NSAttributedStringKey.strokeWidth.rawValue : -3.0,
 			
-			NSParagraphStyleAttributeName : paragraphStyleToCenterText,
-		] as [String : Any]
+			NSAttributedStringKey.paragraphStyle.rawValue : paragraphStyleToCenterText,
+		]
 		
 		textField.defaultTextAttributes = memeTextAttributes
 		textField.adjustsFontSizeToFitWidth = true

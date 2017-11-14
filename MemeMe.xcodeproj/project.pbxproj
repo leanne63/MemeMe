@@ -220,16 +220,16 @@
 					D518D8E61C7A21B200CF7E56 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = T3V4Z3867Q;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0910;
 					};
 					D58D826F1C7F963100027B8D = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0910;
 						TestTargetID = D518D8E61C7A21B200CF7E56;
 					};
 					D58D827D1C7F964300027B8D = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0910;
 						TestTargetID = D518D8E61C7A21B200CF7E56;
 					};
 				};
@@ -457,7 +457,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMe;
 				PRODUCT_NAME = MemeMe;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -470,7 +471,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMe;
 				PRODUCT_NAME = MemeMe;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -482,7 +484,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMeUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemeMe.app/MemeMe";
 			};
 			name = Debug;
@@ -495,7 +498,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMeUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemeMe.app/MemeMe";
 			};
 			name = Release;
@@ -507,7 +511,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MemeMe;
 				USES_XCTRUNNER = YES;
 			};
@@ -520,7 +525,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leanne63.MemeMeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MemeMe;
 				USES_XCTRUNNER = YES;
 			};

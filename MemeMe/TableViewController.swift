@@ -196,8 +196,8 @@ class TableViewController: UITableViewController {
 		let maxNumCharsAvail = 22
 		let halfNumCharsAvail = maxNumCharsAvail / 2
 		
-		let topTextLen = topText.characters.count
-		let bottomTextLen = bottomText.characters.count
+		let topTextLen = topText.count
+		let bottomTextLen = bottomText.count
 		
 		var remainingCharsAvail = maxNumCharsAvail
 		var labelText = ""
@@ -208,11 +208,11 @@ class TableViewController: UITableViewController {
 		}
 		else {
 			// truncate top text to halfway point
-			let index = topText.characters.index(topText.startIndex, offsetBy: halfNumCharsAvail)
-			labelText += topText.substring(to: index)
+			let index = topText.index(topText.startIndex, offsetBy: halfNumCharsAvail)
+			labelText += String(topText[..<index])
 		}
 		
-		remainingCharsAvail -= labelText.characters.count
+		remainingCharsAvail -= labelText.count
 		
 		labelText += ellipsis
 		
@@ -224,23 +224,23 @@ class TableViewController: UITableViewController {
 			// truncate bottom text to fit
 			if remainingCharsAvail <= halfNumCharsAvail {
 				// no room left over from the front, so simply truncate
-				let index = bottomText.characters.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
-				labelText += bottomText.substring(from: index)
+				let index = bottomText.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
+				labelText += String(bottomText[index...])
 			}
 			else {
 				// room was left at the front, so split the truncation between front and back
 				// get remainder at front; fill it with beginning of bottom text
 				let numCharsLeftAtFront = remainingCharsAvail - halfNumCharsAvail
-				let frontIndex = bottomText.characters.index(bottomText.startIndex, offsetBy: numCharsLeftAtFront)
-				labelText += bottomText.substring(to: frontIndex)
+				let frontIndex = bottomText.index(bottomText.startIndex, offsetBy: numCharsLeftAtFront)
+				labelText += String(bottomText[..<frontIndex])
 				
 				// add ellipsis
 				labelText += ellipsis
-				remainingCharsAvail = halfNumCharsAvail - ellipsis.characters.count
+				remainingCharsAvail = halfNumCharsAvail - ellipsis.count
 				
 				// get remainder at end; fill with ending of bottom text
-				let backIndex = bottomText.characters.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
-				labelText += bottomText.substring(from: backIndex)
+				let backIndex = bottomText.index(bottomText.endIndex, offsetBy: -(remainingCharsAvail))
+				labelText += bottomText[backIndex...]
 			}
 		}
 		
