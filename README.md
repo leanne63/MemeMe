@@ -1,9 +1,10 @@
 ## MemeMe
 
 ### *Tech Used*
-* Xcode 7.3.1
-* Swift 2.2
-* iOS 9.2
+* Xcode 7.3.1+ (through 9.0)
+* Swift 2.2 (through 4.0)
+* iOS 9.2 (through 11.0)
+
 Frameworks:  
 - Foundation  
 - UIKit  
@@ -24,3 +25,6 @@ During the current session, users can see their created memes in a table view or
 
 ### *Setup Requirements*
 Just clone and go!
+
+### *Notes*
+- Gets messages on tests about classes being implemented in multiple locations. This is weirdness that is not under our control. Check this Stack Overflow question for possible resolutions if this occurs for you: [Class PLBuildVersion is implemented in both frameworks](https://stackoverflow.com/questions/39520499/class-plbuildversion-is-implemented-in-both-frameworks)
