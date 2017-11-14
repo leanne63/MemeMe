@@ -131,7 +131,7 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
 		activityViewController.popoverPresentationController?.barButtonItem = sender
 		
 		activityViewController.completionWithItemsHandler = {
-			(activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -> Void in
+			(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) -> Void in
 		
 			if completed {
 				self.saveMeme()
